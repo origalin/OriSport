@@ -21,8 +21,7 @@
                         <select class="city cxselect form-control"
                                 data-first-title="选择市" title="city"></select>
                     </div>
-                    <script src="/scrips/js/jquery.cxselect.min.js"></script>
-                    <script>
+                   <script>
                         $.cxSelect.defaults.url = '/scrips/json/cityData.min.json';
                         $('.select').cxSelect({
                             selects: ['province', 'city'],
@@ -30,8 +29,7 @@
                         });
                     </script>
                 </div>
-                <link rel="stylesheet" href="/scrips/css/bootstrap-datetimepicker.css">
-                <div class="form-group">
+               <div class="form-group">
                     <label for="deadline" class="col-sm-2 control-label">开始时间</label>
                     <div class="col-sm-4">
                         <div class='input-group date' id='datetimepicker1'>
@@ -42,9 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <script src='/scrips/js/moment-with-locales.js'></script>
-                <script src='/scrips/js/bootstrap-datetimepicker.js'></script>
-                <script type="text/javascript">
+               <script type="text/javascript">
                     $(function () {
                         $('#datetimepicker1').datetimepicker({
                             format: 'YYYY-MM-DD HH:mm',

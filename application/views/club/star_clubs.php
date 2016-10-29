@@ -52,8 +52,7 @@
                     <select class="type cxselect cxselect-sm form-control"
                             data-first-title="类型" title=""></select>
                 </div>
-                <script src="/script/js/jquery.cxselect.min.js"></script>
-                <script>
+               <script>
                     $.cxSelect.defaults.url = '/scrips/json/cityData.min.json';
                     $('.filter').cxSelect({
                         selects : [ 'province', 'city' ],

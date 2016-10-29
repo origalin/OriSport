@@ -6,9 +6,7 @@
  * Time: 8:51
  */
 ?>
-<link href="/scrips/css/jquery.webui-popover.min.css" rel="stylesheet">
-<script src="/scrips/js/jquery.webui-popover.min.js"></script>
-<script src="/scrips/js/searchProvider.js"></script>
+
 <div class="col-md-10 inPage">
     <div class="row pageInner">
             <button onclick="history.go(-1);" class="btn btn-success">返回</button>

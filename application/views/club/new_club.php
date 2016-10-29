@@ -30,7 +30,6 @@
                         <select class="city cxselect form-control"
                                 data-first-title="选择市" title="city"></select>
                     </div>
-                    <script src="/script/js/jquery.cxselect.min.js"></script>
                     <script>
                         $.cxSelect.defaults.url = '/scrips/json/cityData.min.json';
                         $('.select').cxSelect({

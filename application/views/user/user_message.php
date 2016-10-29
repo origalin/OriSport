@@ -70,4 +70,4 @@
         </div>
     </div>
 </div>
-<script src="/script/js/user_message.js"></script>
+<script src="/resources/script/js/user_message.js"></script>
