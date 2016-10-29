@@ -1,0 +1,142 @@
+.result{
+    text-align: center;
+}
+body{
+    background: url("/resources/img/personal_back.jpg") no-repeat fixed 50% 50%;
+    background-size:cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    box-shadow: inset 0 0 100px rgba(0,0,0,.7);
+}
+.disp{
+    width: 64px;
+    height: 64px;
+    display: block;
+    margin: auto;
+}
+.disp-lg{
+    width: 128px;
+    height: 128px;
+    display: block;
+    margin: auto;
+}
+.distance{
+    background: url("/resources/img/common.png") -128px -64px;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: -64px;
+    background-position-x: -128px;
+    background-position-y: -64px;
+}
+.energe{
+    background: url("/resources/img/common.png") -192px 0;
+    background-position-x: -192px;
+    background-position-y: 0;
+    -ms-background-position-x: -192px;
+    -ms-background-position-y: 0;
+}
+.walk{
+    background: url("/resources/img/common.png") -128px 0;
+    background-position-x: -128px;
+    background-position-y: 0;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: 0;
+}
+.present{
+    background: url("/resources/img/common.png") 0 0;
+    background-position-x: 0;
+    background-position-y: 0;
+    -ms-background-position-x: 0;
+    -ms-background-position-y: 0;
+}
+.sport-light{
+    background: url("/resources/img/common.png") -192px -64px;
+    background-position-x: -192px;
+    background-position-y: -64px;
+    -ms-background-position-x: -192px;
+    -ms-background-position-y: -64px;
+}
+.sport-middle{
+    background: url("/resources/img/common.png") -256px 0;
+    background-position-x: -256px;
+    background-position-y: 0;
+    -ms-background-position-x: -256px;
+    -ms-background-position-y: 0;
+}
+.sport-heavy{
+    background: url("/resources/img/common.png") -256px -64px;
+    background-position-x: -256px;
+    background-position-y: -64px;
+    -ms-background-position-x: -256px;
+    -ms-background-position-y: -64px;
+}
+.sportJudge{
+    background: url("/resources/img/common.png") -320px 0;
+    background-position-x: -320px;
+    background-position-y: 0;
+    -ms-background-position-x: -320px;
+    -ms-background-position-y: 0;
+}
+.sleepTime{
+    background: url("/resources/img/common.png") -448px 0;
+    background-position-x: -448px;
+    background-position-y: 0;
+    -ms-background-position-x: -448px;
+    -ms-background-position-y: 0;
+}
+.deepSleep{
+    background: url("/resources/img/common.png") -448px -64px;
+    background-position-x: -448px;
+    background-position-y: -64px;
+    -ms-background-position-x: -448px;
+    -ms-background-position-y: -64px;
+}
+.sleepJudge-good{
+    background: url("/resources/img/common.png") 0 -128px;
+    background-position-x: 0;
+    background-position-y: -128px;
+    -ms-background-position-x: 0;
+    -ms-background-position-y: -128px;
+}
+.health{
+    background: url("/resources/img/common.png") -256px -128px;
+    background-position-x: -256px;
+    background-position-y: -128px;
+    -ms-background-position-x: -256px;
+    -ms-background-position-y: -128px;
+}
+.sleep{
+    background: url("/resources/img/common.png") -448px -64px;
+    background-position-x: -448px;
+    background-position-y: -64px;
+    -ms-background-position-x: -448px;
+    -ms-background-position-y: -64px;
+}
+.sport{
+    background: url("/resources/img/common.png") -384px -128px;
+    background-position-x: -384px;
+    background-position-y: -128px;
+    -ms-background-position-x: -384px;
+    -ms-background-position-y: -128px;
+}
+.body{
+    background: url("/resources/img/common.png") -448px -128px ;
+    background-position-x: -448px;
+    background-position-y: -128px;
+    -ms-background-position-x: -448px;
+    -ms-background-position-y: -128px;
+}
+.conclution-good{
+    background: url("/resources/img/common.png") 0 -256px;
+    background-position-x: 0;
+    background-position-y: -256px;
+    -ms-background-position-x: 0;
+    -ms-background-position-y: -256px;
+}
+.conclution-bad{
+    background: url("/resources/img/common.png") -320px 0;
+    background-position-x: -320px;
+    background-position-y: 0;
+    -ms-background-position-x: -320px;
+    -ms-background-position-y: 0;
+}

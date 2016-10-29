@@ -1,0 +1,8 @@
+body{
+    background: url("/resources/img/manager_back.jpg") no-repeat fixed 50% 50%;
+    background-size:cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    box-shadow: inset 0 0 100px rgba(0,0,0,.7);
+}

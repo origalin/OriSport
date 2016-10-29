@@ -1,0 +1,59 @@
+body{
+    background: url("/resources/img/user_back.jpg") no-repeat fixed 50% 50%;
+    background-size:cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    box-shadow: inset 0 0 100px rgba(0,0,0,.7);
+}
+.editTool{
+
+}
+.editTool-sp{
+    position: absolute;
+    right: 40px;
+}
+.editTool>button{
+    background-color: transparent;
+    color: #6a6a6a;
+    border: 0;
+    opacity: .3;
+    padding: 0;
+    font-size: 21px;
+    outline: 0 none
+}
+.editTool>button:hover{
+    color: #000000;
+}
+.iconButton{
+    margin-top: 5px;
+    margin-right: 5px;
+    float: right;
+    background-color: transparent;
+    color: #6a6a6a;
+    border: 0;
+    opacity: .3;
+    padding: 0;
+    font-size: 21px;
+    outline: 0 none
+}
+.iconButton:hover{
+    color: #000000;
+}
+.mayChange{
+    display: none;
+}
+.newsItem>div>div>h4:hover{
+    cursor: pointer;
+    color: #888888;
+}
+.collapseDiv{
+    margin: 0;
+
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: inset 0 0 3px rgba(0,0,0,.4);
+}
+.col-xs-1{
+    padding:0;
+}

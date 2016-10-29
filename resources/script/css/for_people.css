@@ -1,0 +1,25 @@
+body{
+    background: url("/resources/img/people_back.jpg") no-repeat fixed 50% 50%;
+    background-size:cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    box-shadow: inset 0 0 100px rgba(0,0,0,.7);
+}
+.smclubItem{
+    margin-top: 10px;
+    border-radius: 3px;
+    padding: 1px 10px;
+    transition:all .1s ease;
+    background-color: #ededed;
+}
+.smclubItem>a{
+    font-family: "微软雅黑", sans-serif;
+    color: #6a6a6a;
+}
+.smclubItem>a:hover{
+    text-decoration: none;
+}
+.smclubItem:hover{
+    box-shadow: 0 0 5px rgba(0,0,0,.3);;
+}
