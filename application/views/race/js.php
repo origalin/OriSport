@@ -10,3 +10,5 @@
 <script src="/resources/script/js/searchProvider.js"></script>
 <script src='/resources/script/js/moment-with-locales.js'></script>
 <script src='/resources/script/js/bootstrap-datetimepicker.js'></script>
+<script src="/resources/script/js/jquery.cxselect.min.js"></script>
+<script src="/resources/script/js/for_race.js"></script>

@@ -30,13 +30,6 @@
                         <select class="city cxselect form-control"
                                 data-first-title="选择市" title="city"></select>
                     </div>
-                    <script>
-                        $.cxSelect.defaults.url = '/scrips/json/cityData.min.json';
-                        $('.select').cxSelect({
-                            selects: ['province', 'city'],
-                            nodata: 'none'
-                        });
-                    </script>
                 </div>
                 <div class="form-group ">
                     <label for="name" class="col-sm-2 control-label">俱乐部类型</label>

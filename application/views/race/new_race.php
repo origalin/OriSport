@@ -21,13 +21,6 @@
                         <select class="city cxselect form-control"
                                 data-first-title="选择市" title="city"></select>
                     </div>
-                   <script>
-                        $.cxSelect.defaults.url = '/scrips/json/cityData.min.json';
-                        $('.select').cxSelect({
-                            selects: ['province', 'city'],
-                            nodata: 'none'
-                        });
-                    </script>
                 </div>
                <div class="form-group">
                     <label for="deadline" class="col-sm-2 control-label">开始时间</label>
@@ -40,15 +33,6 @@
                         </div>
                     </div>
                 </div>
-               <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker({
-                            format: 'YYYY-MM-DD HH:mm',
-                            minDate: new Date(),
-                            locale: 'zh-cn'
-                        });
-                    });
-                </script>
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 control-label">竞赛类型</label>
                     <div class="col-sm-4">

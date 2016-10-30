@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="row pageInner">
-        <a class="newRace" href="/pages/race/new_race"><button class="btn btn-lg btn-success">新建竞赛</button></a>
+        <a class="newRace" href="/race/new_race"><button class="btn btn-lg btn-success">新建竞赛</button></a>
         <span>您需要付出一定积分来创建比赛</span>
     </div>
     <div class="row pageInner">
@@ -29,7 +29,7 @@
         <div class="row">
             <div class="bNewsItem row">
                 <div class="col-md-5 raceHead">
-                    <h2><a href="/pages/race/race_detail">星球杯竞赛</a></h2>
+                    <h2><a href="/race/race_detail">星球杯竞赛</a></h2>
                     <div class="pull-left">山西 太原</div>
                     <div class="pull-right">线下：赛跑</div>
                 </div>

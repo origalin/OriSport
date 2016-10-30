@@ -25,7 +25,7 @@
         <div class="row">
             <div class="bNewsItem row">
                 <div class="col-md-5 raceHead">
-                    <h2><a href="/pages/race/race_detail">星球杯竞赛</a></h2>
+                    <h2><a href="/race/race_detail">星球杯竞赛</a></h2>
                     <div class="pull-left">山西 太原</div>
                     <div class="pull-right">线下：赛跑</div>
                 </div>

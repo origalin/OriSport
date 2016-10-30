@@ -13,19 +13,19 @@
     <div class="pageInner">
         <p>成员</p>
         <div class="member">
-            <a href="/pages/people/">origalin</a>
+            <a href="/people/his_data">origalin</a>
         </div>
         <div class="member">
-            <a href="/pages/people/">origalin</a>
+            <a href="/people/his_data">origalin</a>
         </div>
         <div class="member">
-            <a href="/pages/people/">origalin</a>
+            <a href="/people/his_data">origalin</a>
         </div>
         <div class="member">
-            <a href="/pages/people/">origalin</a>
+            <a href="/people/his_data">origalin</a>
         </div>
         <div class="member">
-            <a href="/pages/people/">origalin</a>
+            <a href="/people/his_data">origalin</a>
         </div>
     </div>
 </div>
@@ -34,7 +34,7 @@
         <h2>XX俱乐部</h2>
         <p>山西太原</p>
         <p>篮球</p>
-        <p>主席：<a href="/pages/people/">origalin</a></p>
+        <p>主席：<a href="/people/his_data">origalin</a></p>
         <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
     </div>
     <div class="row pageInner">

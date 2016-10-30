@@ -14,7 +14,7 @@
         <div class="row myClubList">
             <div class="col-md-4">
                 <div class="smclubItem">
-                    <a href="/pages/in_club/">
+                    <a href="/in_club/clubs">
                         <span></span>
                         <h5>俱乐部3</h5>
                     </a>
@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-4">
                 <div class="smclubItem">
-                    <a href="/pages/in_club/">
+                    <a href="/in_club/clubs">
                         <span></span>
                         <h5>俱乐部3</h5>
                     </a>
@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-4">
                 <div class="smclubItem">
-                    <a href="/pages/in_club/">
+                    <a href="/in_club/clubs">
                         <span></span>
                         <h5>俱乐部3</h5>
                     </a>
@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-4">
                 <div class="smclubItem">
-                    <a href="/pages/in_club/">
+                    <a href="/in_club/clubs">
                         <span></span>
                         <h5>俱乐部3</h5>
                     </a>
@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-4">
                 <div class="smclubItem">
-                    <a href="/pages/in_club/">
+                    <a href="/in_club/clubs">
                         <span></span>
                         <h5>俱乐部3</h5>
                     </a>
@@ -54,7 +54,7 @@
             </div>
             <div class="col-md-4">
                 <div class="smclubItem">
-                    <a href="/pages/in_club/">
+                    <a href="/in_club/clubs">
                         <span></span>
                         <h5>俱乐部3</h5>
                     </a>

@@ -52,19 +52,12 @@
                     <select class="type cxselect cxselect-sm form-control"
                             data-first-title="类型" title=""></select>
                 </div>
-               <script>
-                    $.cxSelect.defaults.url = '/scrips/json/cityData.min.json';
-                    $('.filter').cxSelect({
-                        selects : [ 'province', 'city' ],
-                        nodata : 'none'
-                    });
-                </script>
             </div>
         </div>
         <div class="row clubList">
             <div class="bNewsItem row">
                 <div class="col-md-5">
-                    <h3><a href="/pages/in_club/">XXX俱乐部</a></h3>
+                    <h3><a href="/in_club/clubs">XXX俱乐部</a></h3>
                     <div class="pull-left">山西 太原</div>
                     <div class="pull-right">篮球</div>
                 </div>

@@ -10,7 +10,7 @@
     <div class="row pageInner">
             <h4 class="">
                 我的俱乐部
-                <a class="pull-right" href="/pages/club/new_club"><button class="btn btn-success">新建俱乐部</button></a>
+                <a class="pull-right" href="/club/new_club"><button class="btn btn-success">新建俱乐部</button></a>
             </h4>
         <div class="row myClubList">
             <div class="col-md-4">
