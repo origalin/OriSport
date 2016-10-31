@@ -11,7 +11,7 @@ class SignController extends Controller
     function login(){
         $this->needRender(true);
     }
-    function new_login(){
+    function sign_in(){
         @header("location:/personal/sport_data");
     }
     function checkLogin()

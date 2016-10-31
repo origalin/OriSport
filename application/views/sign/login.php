@@ -9,7 +9,7 @@
     <section class="mainpic">
         <div class="sign col-md-4  sectionColor">
             <span class="icon"></span>
-            <form class="form form-signin" action="/sign/new_login" method="post">
+            <form class="form form-signin" action="/sign/sign_in" method="post">
                 <div class="form-group">
                     <input class="form-control input-lg" name="username" placeholder="用户名">
                 </div>
@@ -20,7 +20,7 @@
                     <input class="form-control btn btn-success" name="" type="submit" value="sign in">
                 </div>
             </form>
-            <form class="form form-signup" action="/sign/new_regist" method="post">
+            <form class="form form-signup" action="/sign/regist" method="post">
                 <div class="form-group">
                     <input class="form-control input-lg" name="username" placeholder="用户名">
                 </div>
