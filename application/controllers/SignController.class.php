@@ -12,7 +12,14 @@ class SignController extends Controller
         $this->needRender(true);
     }
     function sign_in(){
-        @header("location:/personal/sport_data");
+        $sign = new UserCollection();
+        $isCorrect= $sign->loginVerify($_POST['username'],$_POST['password']);
+        if($isCorrect){
+            @header("location:/personal/sport_data");
+        }else{
+            @header("location:/errors/login_fail");
+        }
+        //
     }
     function checkLogin()
     {

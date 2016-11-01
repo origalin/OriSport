@@ -12,6 +12,8 @@ function loadClass($class)
     $frameworks = $class . '.class.php';
     $controllers = 'application/controllers/' . $class . '.class.php';
     $models = 'application/models/' . $class . '.class.php';
+    $tables = 'application/models/table/' . $class . '.table.php';
+    $interfaces = 'application/models/interface/' . $class . '.class.php';
     $views = 'application/views/' . $class . '.class.php';
 
     if (file_exists($frameworks)) {
@@ -25,6 +27,12 @@ function loadClass($class)
     } elseif (file_exists($models)) {
         //加载应用模型类
         include $models;
+    }elseif (file_exists($tables)) {
+        //加载表格类
+        include $tables;
+    }elseif (file_exists($interfaces)) {
+        //加载接口类
+        include $interfaces;
     } else {
         /* 错误代码 */
     }
