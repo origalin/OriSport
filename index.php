@@ -7,6 +7,7 @@
  */
 define('appRoot',$_SERVER['DOCUMENT_ROOT']);
 include appRoot."/config/config.php";
+include appRoot."/config/privilege.php";
 function loadClass($class)
 {
     $frameworks = $class . '.class.php';
@@ -63,7 +64,7 @@ function route()
 
     // 实例化控制器
     $controller = ucfirst($controllerName ). 'Controller';
-    $dispatch = new $controller($controllerName, $action);
+    $dispatch = new $controller($controllerName, $action,$queryString);
 
     // 如果控制器存和动作存在，这调用并传入URL参数
     if ((int)method_exists($controller, $action)) {

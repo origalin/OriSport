@@ -14,7 +14,7 @@ class Table
     function __construct($tableName)
     {
         $this->tableName = $tableName;
-        $this->db = new SQLite3('resources/OriSport.db');
+        $this->db = new SQLite3(DB_ROOT);
     }
 
     function query($sql)
@@ -47,8 +47,7 @@ class Table
     }
     function insert($data){
         $sql = sprintf("insert into %s %s", $this->tableName, $this->formatInsert($data));
-
-        return $this->query($sql);
+        $this->db->exec($sql);
     }
     function  generateResult($reData){
         $result = array();
@@ -61,7 +60,7 @@ class Table
     {
         $sql = sprintf("update %s set %s where id = '%s'", $this->tableName, $this->formatUpdate($data), $id);
 
-        return $this->query($sql);
+        $this->db->exec($sql);
     }
     private function formatInsert($data)
     {

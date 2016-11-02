@@ -8,5 +8,9 @@
  */
 interface UserService
 {
+    function getUserData();
 
+    function updateUserData($data);
+
+    function getAccessPrivilege($controller,$action,$value);
 }

@@ -10,13 +10,7 @@ interface UserCollectionService
 {
     function loginVerify($username, $password);
 
-    function registration($username, $password);
-
-    function getUserData();
-
-    function updateUserData($userDataPo);
-
-    function getAccessPrivilege();
+    function registration($username, $password,$height,$weight,$step_length,$time);
 
     function searchUsers($key);
 }

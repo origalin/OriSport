@@ -11,27 +11,29 @@
             <span class="icon"></span>
             <form class="form form-signin" action="/sign/sign_in" method="post">
                 <div class="form-group">
-                    <input class="form-control input-lg" name="username" placeholder="用户名">
+                    <input class="form-control" name="username" placeholder="用户名">
                 </div>
                 <div class="form-group">
-                    <input class="form-control input-lg" name="password" type="password" placeholder="密码">
+                    <input class="form-control" name="password" type="password" placeholder="密码">
                 </div>
                 <div class="form-group">
                     <input class="form-control btn btn-success" name="" type="submit" value="sign in">
                 </div>
             </form>
-            <form class="form form-signup" action="/sign/regist" method="post">
+            <form class="form form-signup" action="/sign/registration" method="post">
                 <div class="form-group">
-                    <input class="form-control input-lg" name="username" placeholder="用户名">
+                    <input class="form-control" name="username" placeholder="用户名">
                 </div>
                 <div class="form-group">
-                    <input class="form-control input-lg" name="email" type="email" placeholder="邮箱">
+                    <input class="form-control" name="password" type="password" placeholder="密码">
                 </div>
                 <div class="form-group">
-                    <input class="form-control input-lg" name="password" type="password" placeholder="密码">
+                    <input class="form-control" name="repeat-password" type="password" placeholder="重复密码">
                 </div>
                 <div class="form-group">
-                    <input class="form-control input-lg" name="repeat-password" type="password" placeholder="重复密码">
+                    <input class="form-control input-inline" name="height" placeholder="身高">
+                    <input class="form-control input-inline" name="weight" placeholder="体重">
+                    <input class="form-control input-inline" name="step_length" placeholder="步长">
                 </div>
                 <div class="form-group">
                     <input class="form-control btn btn-success" name="" type="submit" value="sign up">

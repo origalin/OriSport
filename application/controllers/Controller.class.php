@@ -34,7 +34,7 @@ class Controller
     //设置是否验证登录
     function checkLogin(){
         if($_SESSION['username']==null){
-            @header("location:/errors/nologin");
+            @header("location:".PAGE_NOTLOGIN);
         }
     }
 
@@ -44,6 +44,5 @@ class Controller
         if($this->needRender){
             $this->_view->render();
         }
-
     }
 }
