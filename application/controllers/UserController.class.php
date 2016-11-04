@@ -14,4 +14,9 @@ class UserController extends Controller
     function user_data(){
         $this->needRender(true);
     }
+    function search_result($key){
+        $userModel = new UserCollection();
+        $results = $userModel->searchUsers($key);
+        echo json_encode($results);
+    }
 }

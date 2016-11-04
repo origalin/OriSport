@@ -8,5 +8,8 @@
  */
 interface RaceService
 {
-
+    function getDetail();
+    function end();
+    function join($uid);
+    function leave($uid);
 }

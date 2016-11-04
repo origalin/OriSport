@@ -42,11 +42,17 @@ class UserCollection implements UserCollectionService
         $newUd['step_length'] = $step_length;
         $newUd['creatday'] = $day;
         $userdataTb->insert($newUd);
+        $_SESSION['username'] = $username;
+        $_SESSION['id'] = $account['id'];
+        $this->loginVerify($username,$password);
     }
 
     function searchUsers($key)
     {
         // TODO: Implement searchUsers() method.
+        $userDataTb = new UserData();
+        $results = $userDataTb->search('username',$key);
+        return $results;
     }
 
 }

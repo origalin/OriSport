@@ -8,5 +8,6 @@
  */
 interface MessageService
 {
-
+    function delete();
+    function markRead();
 }

@@ -8,5 +8,7 @@
  */
 interface RaceCollectionService
 {
-
+    function getRaceList();
+    function createRace($data);
+    function getUserRace($uid ,$type);
 }

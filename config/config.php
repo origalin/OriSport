@@ -9,3 +9,12 @@ define('DB_ROOT', 'resources/OriSport.db');
 define('PAGE_NOTLOGIN', '/errors/nologin');
 define('PAGE_LOGINFAIL','/errors/login_fail');
 define('PAGE_DEFAULE','/personal/sport_data');
+
+define('RACE_MINE','i_create');
+define('RACE_JOIN','i_join');
+define('RACE_HISTORY','history');
+
+define('RACE_NOTSTART','NOTSTART');
+define('RACE_RUNNING','RUNNING');
+define('RACE_RESULTING','RESULTING');
+define('RACE_ENDED','ENDED');

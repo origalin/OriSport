@@ -34,6 +34,10 @@ class Table
         $results = $this->db->query("select * from " . $this->tableName . " where ".$name." =  '" . $value. "'");
         return $this->generateResult($results);
     }
+    function findInGroup($data){
+        $sql = sprintf("select * from %s where %s",$this->tableName,$this->formatWhere($data));
+        return $this->generateResult($this->db->query($sql));
+    }
     function getAll(){
         $results = $this->db->query("select * from " . $this->tableName);
         return $this->generateResult($results);
@@ -43,7 +47,11 @@ class Table
         return $this->generateResult($results);
     }
     function deleteById($id){
-        $this->db->exec("delete * from " . $this->tableName . " where id = '" . $id. "'");
+        $this->db->exec("delete from " . $this->tableName . " where id = '" . $id. "'");
+    }
+    function delete($data){
+        $sql = sprintf("delete from %s where %s",$this->tableName,$this->formatWhere($data));
+        $this->db->exec($sql);
     }
     function insert($data){
         $sql = sprintf("insert into %s %s", $this->tableName, $this->formatInsert($data));
@@ -84,5 +92,13 @@ class Table
         }
 
         return implode(',', $fields);
+    }
+    private function formatWhere($data)
+    {
+        $fields = array();
+        foreach ($data as $key => $value) {
+            $fields[] = sprintf("%s = '%s'", $key, $value);
+        }
+        return implode(' AND ', $fields);
     }
 }

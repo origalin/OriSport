@@ -12,4 +12,9 @@ class RaceData extends Table
     {
         parent::__construct("racedata");
     }
+
+    function getMyJoinRace($uid){
+        $sql = sprintf("select * from racedata WHERE id in (SELECT raceid FROM userinrace WHERE uid = '%s')",RACE_ENDED,$uid);
+        return $this->query($sql);
+    }
 }

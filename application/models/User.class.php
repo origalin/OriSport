@@ -39,11 +39,22 @@ class User implements UserService
                 case 'race_detail':
                     if($this->isRaceCreater($value)){
                         return LEVEL_OWNER;
-                    }else if($this->isRaceInsider($value)){
+                    }elseif ($this->isRaceInsider($value)){
+                        return LEVEL_INSIDER;
+                    }else{
                         return LEVEL_USER;
                     }
                     break;
-
+                case 'clubs':
+                    if($this->isClubManager($value)){
+                        return LEVEL_OWNER;
+                    }elseif ($this->isClubMember($value)){
+                        return LEVEL_INSIDER;
+                    }else{
+                        return LEVEL_USER;
+                    }
+                default:
+                    break;
             }
         }
         // TODO: Implement getAccessPrivilege() method.
@@ -53,13 +64,27 @@ class User implements UserService
         return ($raceTb->findById($raceId)['createrid']==$this->id);
     }
     private function isClubManager($clubId){
-
+        $clubTb = new ClubData();
+        return ($clubTb->findById($clubId)['managerid']==$this->id);
     }
     private function isRaceInsider($raceId){
         $userInRaceTb = new UserInRace();
-        $userInRaceTb->find('raceid',$raceId);
+        $userAndRace = $userInRaceTb->find('raceid',$raceId);
+        for($i = 0;$i<count($userAndRace);$i++){
+            if($this->id == $userAndRace[$i]['uid']){
+                return true;
+            }
+        }
+        return false;
     }
     private function isClubMember($clubId){
-
+        $userInClubTb = new UserInClub();
+        $userAndClub = $userInClubTb->find('clubid',$clubId);
+        for($i = 0;$i<count($userAndClub);$i++){
+            if($this->id == $userAndClub[$i]['uid']){
+                return true;
+            }
+        }
+        return false;
     }
 }

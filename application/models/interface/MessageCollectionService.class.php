@@ -8,5 +8,6 @@
  */
 interface MessageCollectionService
 {
-
+    function createMessage($data);
+    function getMessages($uid);
 }

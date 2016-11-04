@@ -8,5 +8,6 @@
  */
 interface ClubCollectionService
 {
-
+    function getClubList();
+    function createClub($data);
 }
