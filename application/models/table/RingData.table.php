@@ -12,4 +12,8 @@ class RingData extends Table
     {
         parent::__construct("ringdata");
     }
+    function getLastDataOfUser($uid){
+        $sql = sprintf("select * from ringdata WHERE uid = '%s' ORDER BY time DESC LIMIT 0,1",$uid);
+        return $this->query($sql)[0];
+    }
 }

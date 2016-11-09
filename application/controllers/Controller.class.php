@@ -12,6 +12,7 @@ class Controller
     protected $_action;
     protected $_view;
     protected $needRender = false;
+    protected $method;
 
     // 构造函数，初始化属性，并实例化对应模型
     function __construct($controller, $action)
@@ -19,6 +20,7 @@ class Controller
         $this->_controller = $controller;
         $this->_action = $action;
         $this->_view = new View($controller, $action);
+        $this->method = $_SERVER['REQUEST_METHOD'];
         //$this->checkLogin();
     }
 

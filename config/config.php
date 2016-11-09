@@ -18,3 +18,9 @@ define('RACE_NOTSTART','NOTSTART');
 define('RACE_RUNNING','RUNNING');
 define('RACE_RESULTING','RESULTING');
 define('RACE_ENDED','ENDED');
+
+define('FORMAT_DATE','Y-m-d');
+define('FORMAT_TIME','Y-m-d H:i:s');
+
+
+define('R_OF_EARTH',6371004);

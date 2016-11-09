@@ -11,24 +11,30 @@ class SignController extends Controller
     function login(){
         $this->needRender(true);
     }
-    function sign_in(){
-        $user = new UserCollection();
-        $isCorrect= $user->loginVerify($_POST['username'],$_POST['password']);
-        if($isCorrect){
-            @header("location:".PAGE_DEFAULE);
-        }else{
-            @header("location:".PAGE_LOGINFAIL);
+    function account($type){
+        switch ($type[0]){
+            case 'verifying':
+                $user = new UserCollection();
+                $isCorrect= $user->loginVerify($_POST['username'],$_POST['password']);
+                if($isCorrect){
+                    @header("location:".PAGE_DEFAULE);
+                }else{
+                    @header("location:".PAGE_LOGINFAIL);
+                }
+                break;
+            case 'registration':
+                $user = new UserCollection();
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $height = $_POST['height'];
+                $weight = $_POST['weight'];
+                $step_length = $_POST['step_length'];
+                $user->registration($username,$password,$height,$weight,$step_length,date("Y-m-d"));
+                @header("location:".PAGE_DEFAULE);
+                break;
+            default:
+                break;
         }
-        //
-    }
-    function registration(){
-        $user = new UserCollection();
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $height = $_POST['height'];
-        $weight = $_POST['weight'];
-        $step_length = $_POST['step_length'];
-        $user->registration($username,$password,$height,$weight,$step_length,date("Y-m-d"));
     }
     function checkLogin()
     {

@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col-md-6">
                 <span class="sleepTime disp"></span>
-                <p>你的最近一次睡眠，持续时间<br><span class="bNums">30</span>小时<span class="bNums">30</span>分钟</p>
+                <p>你的最近一次睡眠，持续时间<br><span class="bNums"><?=floor($sleepData['lastTime']/60)?></span>小时<span class="bNums"><?=$sleepData['lastTime']%60?></span>分钟</p>
             </div>
             <div class="col-md-6">
                 <span class="deepSleep disp"></span>
-                <p>其中深度睡眠时间为<br><span class="bNums">30</span>小时<span class="bNums">30</span>分钟</p>
+                <p>其中深度睡眠时间为<br><span class="bNums"><?=floor($sleepData['lastDeepTime']/60)?></span>小时<span class="bNums"><?=$sleepData['lastDeepTime']%60?></span>分钟</p>
             </div>
         </div>
         <div class="row">

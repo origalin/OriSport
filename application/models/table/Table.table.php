@@ -8,8 +8,8 @@
  */
 class Table
 {
-    private $db;
-    private $tableName;
+    protected $db;
+    protected $tableName;
 
     function __construct($tableName)
     {

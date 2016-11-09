@@ -40,7 +40,7 @@ class UserCollection implements UserCollectionService
         $newUd['height'] = $height;
         $newUd['weight'] = $weight;
         $newUd['step_length'] = $step_length;
-        $newUd['creatday'] = $day;
+        $newUd['createday'] = $day;
         $userdataTb->insert($newUd);
         $_SESSION['username'] = $username;
         $_SESSION['id'] = $account['id'];

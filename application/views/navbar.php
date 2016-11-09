@@ -29,12 +29,12 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" id="mesSpan"><a href="#"
                                                      class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                     aria-haspopup="true" aria-expanded="false"> origalin<span
+                                                     aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['username']?><span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a  href="/pages/user/user_message">我的消息 </a></li>
-                        <li><a  href="/pages/user/user_data">我的资料</a></li>
-                        <li><a  href="/pages/manager/">管理员</a></li>
+                        <li><a  href="/user/user_message">我的消息 </a></li>
+                        <li><a  href="/user/user_data">我的资料</a></li>
+                        <li><a  href="/manager/">管理员</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a id="login" style="cursor: pointer;">登出</a></li>
                     </ul></li>

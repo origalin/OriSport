@@ -8,20 +8,24 @@
 ?>
 <div class="col-md-10 inPage">
     <div class="row pageInner">
-        <h4>过去7天内，你的运动时间为<span class="bNums">77</span>小时，其中：</h4>
+        <h4>过去7天内，你的运动时间为<span class="bNums"><?= floor($sportTrack['totalTime'] / 60) ?></span>小时<span
+                class="bNums"><?= $sportTrack['totalTime'] % 60 ?></span>分钟，其中：</h4>
     </div>
     <div class="row pageInner result">
         <div class="col-md-4">
             <span class="sport-light disp"></span>
-            <p>轻微运动<br><span class="bNums">7</span>小时<span class="bNums">30</span>分钟</p>
+            <p>轻微运动<br><span class="bNums"><?= floor($sportTrack['slowTime'] / 60) ?></span>小时<span
+                    class="bNums"><?= $sportTrack['slowTime'] % 60 ?></span>分钟</p>
         </div>
         <div class="col-md-4">
             <span class="sport-middle disp"></span>
-            <p>适度运动<br><span class="bNums">30</span>小时<span class="bNums">30</span>分钟</p>
+            <p>适度运动<br><span class="bNums"><?= floor($sportTrack['fastTime'] / 60) ?></span>小时<span
+                    class="bNums"><?= $sportTrack['fastTime'] % 60 ?></span>分钟</p>
         </div>
         <div class="col-md-4">
             <span class="sport-heavy disp"></span>
-            <p>剧烈运动<br><span class="bNums">30</span>小时<span class="bNums">30</span>分钟</p>
+            <p>剧烈运动<br><span class="bNums"><?= floor($sportTrack['rideTime'] / 60) ?></span>小时<span
+                    class="bNums"><?= $sportTrack['rideTime'] % 60 ?></span>分钟</p>
         </div>
     </div>
     <div class="row pageInner result">
@@ -51,23 +55,44 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>
-                    2016/10/12 19:00
-                </td>
-                <td>
-                    1小时
-                </td>
-                <td>
-                    慢跑
-                </td>
-                <td>
-                    1000m
-                </td>
-                <td>
-                    12912
-                </td>
-            </tr>
+            <?php
+            if (count($sportTrack['trackTb']) == 0) {
+                echo '<tr ><td colspan = \'5\' style="text-align: center">暂无</td></tr>';
+            } else {
+                foreach ($sportTrack['trackTb'] as $value) { ?>
+                    <tr>
+                        <td>
+                            <?=$value['time']?>
+                        </td>
+                        <td>
+                            <?=$value['length']?>分钟
+                        </td>
+                        <td>
+                            <?php switch ($value['type']){
+                                case 'slow':
+                                    echo '慢跑/缓和运动';
+                                    break;
+                                case 'fast':
+                                    echo '快跑/剧烈运动';
+                                    break;
+                                case 'ride':
+                                    echo '骑行';
+                                    break;
+                                default:
+                                    break;
+                            }?>
+                        </td>
+                        <td>
+                            <?=$value['distance']?>m
+                        </td>
+                        <td>
+                            <?=$value['calorie']?>
+                        </td>
+                    </tr>
+                <?php }
+            }
+            ?>
+
             </tbody>
         </table>
     </div>

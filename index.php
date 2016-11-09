@@ -64,14 +64,15 @@ function route()
 
     // 实例化控制器
     $controller = ucfirst($controllerName ). 'Controller';
-    $dispatch = new $controller($controllerName, $action,$queryString);
+    $dispatch = new $controller($controllerName, $action);
 
     // 如果控制器存和动作存在，这调用并传入URL参数
     if ((int)method_exists($controller, $action)) {
-        call_user_func_array(array($dispatch, $action), $queryString);
+        call_user_func_array(array($dispatch, $action), array($queryString));
     } else {
         exit($controller . "控制器不存在");
     }
 }
 spl_autoload_register("loadClass");
+session_start();
 route();

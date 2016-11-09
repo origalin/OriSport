@@ -10,7 +10,15 @@ interface UserService
 {
     function getUserData();
 
+    function getSportTrack();
+
+    function getSleepData();
+
+    function getSportData();
+
     function updateUserData($data);
 
     function getAccessPrivilege($controller,$action,$value);
+
+    function upLoadRingData($data);
 }
