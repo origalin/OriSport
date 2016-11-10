@@ -10,4 +10,7 @@ interface ClubCollectionService
 {
     function getClubList();
     function createClub($data);
+    function getUserJoinedClub($uid);
+    function getUserCreatedClub($uid);
+    function getClubActivity($uid);
 }

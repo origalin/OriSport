@@ -9,6 +9,10 @@
 class ClubController extends Controller
 {
     function my_clubs(){
+        $clubCollection = new ClubCollection();
+        $this->assign('userJoined',$clubCollection->getUserJoinedClub($_SESSION['id']));
+        $this->assign('userCreated',$clubCollection->getUserCreatedClub($_SESSION['id']));
+        $this->assign('activities',$clubCollection->getClubActivity($_SESSION['id']));
         $this->needRender(true);
     }
     function new_club(){

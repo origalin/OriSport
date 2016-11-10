@@ -14,7 +14,7 @@ class RaceData extends Table
     }
 
     function getMyJoinRace($uid){
-        $sql = sprintf("select * from racedata WHERE id in (SELECT raceid FROM userinrace WHERE uid = '%s')",RACE_ENDED,$uid);
+        $sql = sprintf("select * from racedata WHERE id in (SELECT raceid FROM userinrace WHERE uid = '%s')",$uid);
         return $this->query($sql);
     }
 }

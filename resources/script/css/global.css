@@ -154,6 +154,7 @@ body{
 }
 .switchs{
     margin-left: 15px;
+    margin-bottom: 15px;
 }
 .btn{
     transition:all .3s ease;
@@ -173,18 +174,29 @@ body{
     transform: scale(0.98);
 }
 .bNewsItem {
-    font-family: "微软雅黑", sans-serif;
-    background-color: #f6f6f6;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 10px;
-    box-shadow: 0 0 5px rgba(0,0,0,.3);
-    border-radius: 5px;
     transition:all .1s ease;
     padding-bottom: 10px;
+    border-bottom: 1px solid #cecece;
+    border-top: 1px solid #cecece;
 }
-.bNewsItem:hover{
-    transform: scale(0.98);
+.bNewsItem>div>div>div>h3>a{
+    text-decoration: none;
+}
+.tag-sm{
+    display: inline-block;
+    line-height: 23px;
+    border-radius: 12px;
+    padding: 0 10px;
+    border: 1px solid #e5e9ef;
+    color: #6d757a;
+    text-align: center;
+    margin-left: 10px;
+    font-size: 12px;
+}
+.tag-city{
+    color: #6d757a;
 }
 .searchLabel {
 
@@ -205,6 +217,39 @@ body{
 .inPop{
     overflow: auto;
     max-height: 400px;
+}
+.withIcon{
+    margin-left: 20px;
+    position: relative;
+}
+.icon{
+    position: absolute;
+    left: -17px;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+.icon-deadline{
+    background: url("/resources/img/common.png") -128px -256px;
+    background-position-x: -128px;
+    background-position-y: -256px;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: -256px;
+}
+.icon-location{
+    background: url("/resources/img/common.png") -128px -288px;
+    background-position-x: -128px;
+    background-position-y: -288px;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: -288px;
+}
+.icon-reward{
+    background: url("/resources/img/common.png") -128px -272px;
+    background-position-x: -128px;
+    background-position-y: -272px;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: -272px;
 }
 @media (max-width: 768px){
     .webui-popover{

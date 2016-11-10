@@ -18,7 +18,12 @@ class Race implements RaceService
     {
         // TODO: Implement getDetail() method.
         $raceTb = new RaceData();
-        return $raceTb->findById($this->id);
+        $userInRaceTb = new UserInRace();
+        $accountTb = new Account();
+        $raceData =$raceTb->findById($this->id);
+        $raceData['joiners'] = $userInRaceTb->find('raceid',$this->id);
+        $raceData['creatername'] = $accountTb->findById($raceData['createrid'])['username'];
+        return $raceData;
     }
 
     function end()

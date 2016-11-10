@@ -6,19 +6,19 @@ $(function () {
     if($.cxSelect!=undefined){
         $.cxSelect.defaults.url = '/resources/script/json/cityData.min.json';
     }
-    if($('.filter')!=undefined){
+    if($('.filter').length>0){
         $('.filter').cxSelect({
             selects : [ 'province', 'city' ],
             nodata : 'none'
         });
     }
-    if($('.select')!=undefined){
+    if($('.select').length>0){
         $('.select').cxSelect({
             selects: ['province', 'city'],
             nodata: 'none'
         });
     }
-    if($('#datetimepicker1')!=undefined){
+    if($('#datetimepicker1').length>0){
         $('#datetimepicker1').datetimepicker({
             format: 'YYYY-MM-DD HH:mm',
             minDate: new Date(),

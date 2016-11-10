@@ -12,6 +12,10 @@
 .smclubItem>a:hover{
     text-decoration: none;
 }
+.smclubItem>a>h5{
+    margin-left: 15px;
+    position: relative;
+}
 .smclubItem:hover{
     box-shadow: 0 0 5px rgba(0,0,0,.3);
 }
@@ -21,6 +25,28 @@
 }
 .starContainer{
     height: 200px;;
+}
+.clubIcon{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: absolute;
+    left: -18px;
+    top: 0;
+}
+.icon-manager{
+    background: url("/resources/img/common.png") -128px -304px;
+    background-position-x: -128px;
+    background-position-y: -304px;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: -304px;
+}
+.icon-member{
+    background: url("/resources/img/common.png") -128px -320px;
+    background-position-x: -128px;
+    background-position-y: -320px;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: -320px;
 }
 
 body{

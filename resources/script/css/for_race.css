@@ -7,14 +7,9 @@ body{
     -o-background-size: cover;
     box-shadow: inset 0 0 100px rgba(0,0,0,.7);
 }
+#mine{
 
-.raceBody{
-    text-align: center;
 }
-.raceBody>div{
-    text-align: center;
-    margin: auto;
-}
-.raceHead>h2>a{
-
+#join{
+    display: none;
 }
