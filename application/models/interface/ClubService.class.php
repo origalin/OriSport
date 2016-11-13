@@ -11,6 +11,7 @@ interface ClubService
     function getDetail();
     function getChat();
     function getPub();
+    function getMember();
     function addChat($data);
     function addPub($data);
     function join($uid);

@@ -115,6 +115,15 @@ class User implements UserService
                     break;
             }
         }
+        $point = $result['slowTime']+$result['fastTime']+$result['rideTime'];
+        $pointTb = array(400,1200);
+        $evaluationTb = array(SPORT_LACK,SPORT_FIT,SPORT_MUCH);
+        $result['evaluation'] = $evaluationTb[0];
+        for($i = 0;$i<count($pointTb);$i++){
+            if($point>=$pointTb[$i]){
+                $result['evaluation']=$evaluationTb[$i+1];
+            }
+        }
         return $result;
     }
 
@@ -127,6 +136,15 @@ class User implements UserService
         $result['sleepTb'] = $sleepDataTb->find('uid',$this->id);
         $result['lastTime'] = $lastSleep['length'];
         $result['lastDeepTime'] = $lastSleep['deeplength'];
+        $point = $result['lastTime'];
+        $pointTb = array(390,600);
+        $evaluationTb = array(SLEEP_LACK,SLEEP_FIT,SLEEP_MUCH);
+        $result['evaluation'] = $evaluationTb[0];
+        for($i = 0;$i<count($pointTb);$i++){
+            if($point>=$pointTb[$i]){
+                $result['evaluation'] = $evaluationTb[$i+1];
+            }
+        }
         return $result;
     }
 
@@ -138,6 +156,15 @@ class User implements UserService
         $createDay = (new UserData())->findById($this->id)['createday'];
         $days = (strtotime(date(FORMAT_DATE))-strtotime($createDay))/(60*60*24);
         $result['days'] = $days;
+        $points = $result['totaldistance']+$result['calorie'];
+        $pointsTb = array(30000,100000);
+        $titleTb = array(TITLE_NEWMAN,TITLE_OLDHAND,TITLE_EXPERT);
+        $result['title'] = $titleTb[0];
+        for($i = 0;$i<count($pointsTb);$i++){
+            if ($points>=$pointsTb[$i]){
+                $result['title'] = $titleTb[$i+1];
+            }
+        }
         return $result;
     }
 
@@ -300,5 +327,55 @@ class User implements UserService
                 break;
         }
         $sportDataTb->update($originSportData['id'],$newSportData);
+    }
+
+    function getHealthData()
+    {
+        // TODO: Implement getHealthData() method.
+        $sportData = $this->getSportTrack();
+        $sleepData = $this->getSleepData();
+        $good = '优良';
+        $bad = '欠佳';
+        $result = array();
+        switch ($sportData['evaluation']){
+            case SPORT_FIT:
+                $sportPoint = 33;
+                $result['sport'] = $good;
+                break;
+            default:
+                $sportPoint=22;
+                $result['sport'] = $bad;
+                break;
+        }
+        switch ($sleepData['evaluation']){
+            case SLEEP_FIT:
+                $sleepPoint = 33;
+                $result['sleep'] = $good;
+                break;
+            default:
+                $sleepPoint = 22;
+                $result['sleep'] = $bad;
+                break;
+        }
+        $userData = $this->getUserData();
+        $bodyPoint = 33-(abs($userData['height']-110-$userData['weight']));
+        $bodyPoint = $bodyPoint<0?0:$bodyPoint;
+        if($bodyPoint<22){
+            $result['body'] = $bad;
+        }else{
+            $result['body'] = $good;
+        }
+        $point = $sportPoint+$sleepPoint+$bodyPoint;
+        $result['point'] = $point;
+        $pointTb = array(77,99);
+        $evaluationTb = array(HEALTH_BAD,HEALTH_MIDDLE,HEALTH_GOOD);
+        $result['evaluation'] = $evaluationTb[0];
+        for($i = 0;$i<count($pointTb);$i++){
+            if($point>=$pointTb[$i]){
+                $result['evaluation'] = $evaluationTb[$i+1];
+            }
+        }
+        return $result;
+
     }
 }

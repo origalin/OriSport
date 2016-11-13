@@ -7,3 +7,4 @@
  */
 ?>
 <script src="/resources/script/js/for_user.js"></script>
+<script src="/resources/script/js/jquery.cxselect.min.js"></script>

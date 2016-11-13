@@ -20,6 +20,20 @@ class MessageCollection implements MessageCollectionService
     {
         // TODO: Implement getMessages() method.
         $messageTb = new MessageData();
-        return $messageTb->find('recriverid',$uid);
+        $accountTb = new Account();
+        $messages = $messageTb->find('receiverid',$uid);
+        $result = array();
+        $result['byUser'] = array();
+        $result['bySystem'] = array();
+        foreach ($messages as $value){
+            if($value['senderid']==0){
+                $value['sendername']='系统';
+                $result['bySystem'][] = $value;
+            }else{
+                $value['sendername'] = $accountTb->findById($value['senderid'])['username'];
+                $result['byUser'][] = $value;
+            }
+        }
+        return $result;
     }
 }

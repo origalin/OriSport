@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             <span class="sleepJudge-good disp-lg"></span>
-            <h4>达到了健康标准</h4>
+            <h4><?=$sleepData['evaluation']?></h4>
         </div>
     </div>
     <div class="row pageInner">

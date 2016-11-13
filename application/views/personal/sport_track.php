@@ -14,23 +14,23 @@
     <div class="row pageInner result">
         <div class="col-md-4">
             <span class="sport-light disp"></span>
-            <p>轻微运动<br><span class="bNums"><?= floor($sportTrack['slowTime'] / 60) ?></span>小时<span
+            <p>慢跑<br><span class="bNums"><?= floor($sportTrack['slowTime'] / 60) ?></span>小时<span
                     class="bNums"><?= $sportTrack['slowTime'] % 60 ?></span>分钟</p>
         </div>
         <div class="col-md-4">
             <span class="sport-middle disp"></span>
-            <p>适度运动<br><span class="bNums"><?= floor($sportTrack['fastTime'] / 60) ?></span>小时<span
+            <p>快跑<br><span class="bNums"><?= floor($sportTrack['fastTime'] / 60) ?></span>小时<span
                     class="bNums"><?= $sportTrack['fastTime'] % 60 ?></span>分钟</p>
         </div>
         <div class="col-md-4">
             <span class="sport-heavy disp"></span>
-            <p>剧烈运动<br><span class="bNums"><?= floor($sportTrack['rideTime'] / 60) ?></span>小时<span
+            <p>骑行<br><span class="bNums"><?= floor($sportTrack['rideTime'] / 60) ?></span>小时<span
                     class="bNums"><?= $sportTrack['rideTime'] % 60 ?></span>分钟</p>
         </div>
     </div>
     <div class="row pageInner result">
         <span class="sportJudge disp-lg"></span>
-        <p>您不觉得累吗？？？</p>
+        <p><?=$sportTrack['evaluation']?></p>
     </div>
     <div class="row pageInner">
         <h3>以下是你近期的运动记录</h3>

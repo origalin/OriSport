@@ -25,5 +25,7 @@ class PersonalController extends Controller
     }
     function health_manage(){
         $this->needRender(true);
+        $user = new User($_SESSION['id']);
+        $this->assign('healthData',$user->getHealthData());
     }
 }

@@ -8,6 +8,7 @@
 define('appRoot',$_SERVER['DOCUMENT_ROOT']);
 include appRoot."/config/config.php";
 include appRoot."/config/privilege.php";
+include appRoot."/config/words.php";
 function loadClass($class)
 {
     $frameworks = $class . '.class.php';

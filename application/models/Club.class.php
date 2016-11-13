@@ -18,14 +18,22 @@ class Club implements ClubService
     {
         // TODO: Implement getDetail() method.
         $clubTb = new ClubData();
-        return $clubTb->findById($this->id);
+        $accountTb = new Account();
+        $result = $clubTb->findById($this->id);
+        $result['managername'] = $accountTb->findById($result['managerid'])['username'];
+        return $result;
     }
 
     function getChat()
     {
         // TODO: Implement getChat() method.
         $chatOfClub = new MessageOfClub();
-        return $chatOfClub->find('clubid',$this->id);
+        $accountTb = new Account();
+        $result = $chatOfClub->find('clubid',$this->id);
+        for($i = 0;$i<count($result);$i++){
+            $result[$i]['creatername'] = $accountTb->findById($result[$i]['createrid'])['username'];
+        }
+        return $result;
     }
 
     function getPub()
@@ -65,5 +73,21 @@ class Club implements ClubService
         $userInClubTb = new UserInClub();
         $data = array('uid'=>$uid,'clubid'=>$this->id);
         $userInClubTb->delete($data);
+    }
+
+    function getMember()
+    {
+        // TODO: Implement getMember() method.
+        $userInClubTb = new UserInClub();
+        $accountTb = new Account();
+        $result = array();
+        $relations = $userInClubTb->find('clubid',$this->id);
+        foreach ($relations as $value){
+            $item = array();
+            $item['id'] = $value['uid'];
+            $item['username'] = $accountTb->findById($value['uid'])['username'];
+            $result[]=$item;
+        }
+        return $result;
     }
 }

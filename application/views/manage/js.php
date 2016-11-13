@@ -6,4 +6,4 @@
  * Time: 15:21
  */
 ?>
-<link href="/resources/script/css/for_manager.css" rel="stylesheet" >
+

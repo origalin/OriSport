@@ -1,52 +1,9 @@
-.smclubItem{
-    margin-top: 10px;
-    border-radius: 3px;
-    padding: 1px 10px;
-    transition:all .1s ease;
-    background-color: #ededed;
-}
-.smclubItem>a{
-    font-family: "微软雅黑", sans-serif;
-    color: #6a6a6a;
-}
-.smclubItem>a:hover{
-    text-decoration: none;
-}
-.smclubItem>a>h5{
-    margin-left: 15px;
-    position: relative;
-}
-.smclubItem:hover{
-    box-shadow: 0 0 5px rgba(0,0,0,.3);
-}
 
 .time{
     float: right;
 }
 .starContainer{
     height: 200px;;
-}
-.clubIcon{
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    position: absolute;
-    left: -18px;
-    top: 0;
-}
-.icon-manager{
-    background: url("/resources/img/common.png") -128px -304px;
-    background-position-x: -128px;
-    background-position-y: -304px;
-    -ms-background-position-x: -128px;
-    -ms-background-position-y: -304px;
-}
-.icon-member{
-    background: url("/resources/img/common.png") -128px -320px;
-    background-position-x: -128px;
-    background-position-y: -320px;
-    -ms-background-position-x: -128px;
-    -ms-background-position-y: -320px;
 }
 
 body{
@@ -56,4 +13,12 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     box-shadow: inset 0 0 100px rgba(0,0,0,.7);
+}
+.messageItem{
+    padding-top: 10px;
+    border-bottom: 1px solid #cecece;
+    border-top: 1px solid #cecece;
+}
+.messageArea{
+    margin-bottom: 40px;
 }

@@ -26,6 +26,6 @@
     </div>
     <div class="row result pageInner">
         <span class="present disp-lg"></span>
-        <p>你的表现达到了<span class="bNums">“健美专家”</span>级别</p>
+        <p>你的表现达到了<span class="bNums">“<?=$sportData['title']?>”</span>级别</p>
     </div>
 </div>

@@ -27,3 +27,18 @@ function retrieveContact(item) {
     parent.empty();
     parent.append('<button onclick="startContactEdit(this)" class="glyphicon glyphicon-edit"></button>');
 }
+$('.newsItem').children().find('h4').on('click',function () {
+    $(this).parents('.newsItem').find('.collapse').collapse('toggle');
+});
+function showUser() {
+    $('#system').hide();
+    $('#user').fadeIn();
+    $('#showUser').addClass('active');
+    $('#showSystem').removeClass('active');
+}
+function showSystem() {
+    $('#user').hide();
+    $('#system').fadeIn();
+    $('#showSystem').addClass('active');
+    $('#showUser').removeClass('active');
+}

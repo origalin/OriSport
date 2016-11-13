@@ -21,4 +21,6 @@ interface UserService
     function getAccessPrivilege($controller,$action,$value);
 
     function upLoadRingData($data);
+
+    function getHealthData();
 }
