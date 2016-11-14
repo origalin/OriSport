@@ -17,4 +17,17 @@ class RaceData extends Table
         $sql = sprintf("select * from racedata WHERE id in (SELECT raceid FROM userinrace WHERE uid = '%s')",$uid);
         return $this->query($sql);
     }
+    function getRaceBycCondition($data){
+        $page = 1;
+        $where = 'where';
+        if(array_key_exists('page',$data)){
+            $page = $data['page'];
+            unset($data['page']);
+        }
+        if(count($data)==0){
+            $where = '';
+        }
+        $sql = sprintf("select * from racedata %s %s LIMIT %d,%d",$where,$this->formatWhere($data),($page-1)*20,$page*20);
+        return $this->query($sql);
+    }
 }

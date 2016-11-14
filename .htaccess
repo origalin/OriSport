@@ -11,5 +11,5 @@
     # 例如：当我们请求<域名>item/index时，实际上是
     # 请求<域名>index.php?url=item/index，在PHP中
     # 用 GET['url'] 就能拿到字符串item/index
-    RewriteRule ^(.*)$ index.php?url=$1 [PT,L]
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA]
 </IfModule>

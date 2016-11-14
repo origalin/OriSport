@@ -37,6 +37,23 @@ class RaceController extends Controller
         $this->needRender(true);
     }
     function race_field(){
+        $raceCollection = new RaceCollection();
+        $defaultCondition = array();
+        $this->assign('raceList',$raceCollection->getRaceList($defaultCondition));
+        $this->assign('raceTypes',json_decode(TYPE_OF_RACE));
         $this->needRender(true);
+    }
+    function raceList(){
+        $raceCollection = new RaceCollection();
+        $condition = array();
+        $condition['page'] = 1;
+        $checkList = array('province','city','type');
+        foreach ($checkList as $value){
+            if (isset($_GET[$value])){
+                $condition[$value] = $_GET[$value];
+            }
+        }
+        $result = $raceCollection->getRaceList($condition);
+        echo json_encode($result,JSON_UNESCAPED_UNICODE);
     }
 }

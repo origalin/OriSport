@@ -23,3 +23,6 @@ define('FORMAT_DATE','Y-m-d');
 define('FORMAT_TIME','Y-m-d H:i:s');
 
 define('R_OF_EARTH',6371004);
+
+define('TYPE_OF_RACE',json_encode(array('短跑','中长跑','马拉松','骑行','其他'),JSON_UNESCAPED_UNICODE));
+define('TYPE_OF_CLUB',json_encode(array('跑步','篮球','羽毛球','乒乓球','网球','门球','排球','高尔夫'),JSON_UNESCAPED_UNICODE));

@@ -9,11 +9,11 @@
 class RaceCollection implements RaceCollectionService
 {
 
-    function getRaceList()
+    function getRaceList($condition)
     {
         // TODO: Implement getRaceList() method.
         $raceTb = new RaceData();
-        $result = $raceTb->getAll();
+        $result = $raceTb->getRaceBycCondition($condition);
         return $result;
     }
 

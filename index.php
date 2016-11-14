@@ -47,7 +47,6 @@ function route()
     if (!empty($_GET['url'])) {
         $url = $_GET['url'];
         $urlArray = explode('/', $url);
-
         // 获取控制器名
         $controllerName = $urlArray[0];
 
@@ -66,7 +65,6 @@ function route()
     // 实例化控制器
     $controller = ucfirst($controllerName ). 'Controller';
     $dispatch = new $controller($controllerName, $action);
-
     // 如果控制器存和动作存在，这调用并传入URL参数
     if ((int)method_exists($controller, $action)) {
         call_user_func_array(array($dispatch, $action), array($queryString));

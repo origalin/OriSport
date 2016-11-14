@@ -93,7 +93,7 @@ class Table
 
         return implode(',', $fields);
     }
-    private function formatWhere($data)
+    protected function formatWhere($data)
     {
         $fields = array();
         foreach ($data as $key => $value) {

@@ -21,6 +21,6 @@ class UserController extends Controller
     function search_result($key){
         $userModel = new UserCollection();
         $results = $userModel->searchUsers($key);
-        echo json_encode($results);
+        echo json_encode($results,JSON_UNESCAPED_UNICODE);
     }
 }
