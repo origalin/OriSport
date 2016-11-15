@@ -12,4 +12,17 @@ class ClubData extends Table
     {
         parent::__construct("clubdata");
     }
+    function getClubByCondition($data){
+        $page = 1;
+        $where = 'where';
+        if(array_key_exists('page',$data)){
+            $page = $data['page'];
+            unset($data['page']);
+        }
+        if(count($data)==0){
+            $where = '';
+        }
+        $sql = sprintf("select * from clubdata %s %s LIMIT %d,%d",$where,$this->formatWhere($data),($page-1)*20,$page*20);
+        return $this->query($sql);
+    }
 }

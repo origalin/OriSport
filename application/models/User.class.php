@@ -24,8 +24,7 @@ class User implements UserService
     function updateUserData($data)
     {
         $userDataTb = new UserData();
-        $dataId = $userDataTb->find('uid',$this->id)[0]['id'];
-        $userDataTb->update($dataId,$data);
+        $userDataTb->update($this->id,$data);
         // TODO: Implement updateUserData() method.
     }
 

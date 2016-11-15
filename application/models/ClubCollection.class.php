@@ -9,11 +9,12 @@
 class ClubCollection implements ClubCollectionService
 {
 
-    function getClubList()
+    function getClubList($condition)
     {
         // TODO: Implement getClubList() method.
         $clubTb = new ClubData();
-        return $clubTb->getAll();
+        $result = $clubTb->getClubByCondition($condition);
+        return $result;
     }
 
     function createClub($data)

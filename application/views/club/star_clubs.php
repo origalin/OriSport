@@ -41,32 +41,27 @@
         </div>
     </div>
     <div class="row pageInner">
-        <div class="row">
-            <div class="clubFilter">
-                <div class="col-md-6 col-xs-8 filter">
-                    <span>筛选：</span>
-                    <select class="province cxselect cxselect-sm form-control"
-                            data-first-title="选择省" title="province"></select>
-                    <select class="city cxselect cxselect-sm form-control"
-                            data-first-title="选择市" title="city"></select>
-                    <select class="type cxselect cxselect-sm form-control"
-                            data-first-title="类型" title=""></select>
-                </div>
+        <div class="row switchs">
+            <div class="col-md-10 filter">
+                <span>筛选：</span>
+                <select class="province cxselect cxselect-sm form-control"
+                        data-first-title="-选择省-" title="province" id="province" onchange="screenClub()"></select>
+                <select class="city cxselect cxselect-sm form-control"
+                        data-first-title="-选择市-" title="city" id="city" onchange="screenClub()"></select>
+                <select class="cxselect cxselect-sm form-control" id="type" onchange="screenClub()">
+                    <option value="1" style="color: #b6b6b6" disabled selected>-选择类型-</option>
+                    <?php
+                    foreach($clubTypes as $value){
+                        ?>
+                        <option><?=$value?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
             </div>
         </div>
-        <div class="row clubList">
-            <div class="bNewsItem row">
-                <div class="col-md-5">
-                    <h3><a href="/in_club/clubs">XXX俱乐部</a></h3>
-                    <div class="pull-left">山西 太原</div>
-                    <div class="pull-right">篮球</div>
-                </div>
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-3">
-                    <h3>1000人</h3>
-                </div>
-            </div>
+        <div class="row" id="clubList">
+
         </div>
     </div>
 </div>

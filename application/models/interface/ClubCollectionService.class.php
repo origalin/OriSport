@@ -8,7 +8,7 @@
  */
 interface ClubCollectionService
 {
-    function getClubList();
+    function getClubList($condition);
     function createClub($data);
     function getUserJoinedClub($uid);
     function getUserCreatedClub($uid);

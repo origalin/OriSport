@@ -7,3 +7,5 @@
  */
 ?>
 <link href="/resources/script/css/for_user.css" rel="stylesheet" >
+<link href="/resources/script/css/cropper.css" rel="stylesheet" >
+<link href="/resources/script/css/sitelogo.css" rel="stylesheet" >
