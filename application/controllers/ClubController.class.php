@@ -16,6 +16,7 @@ class ClubController extends Controller
         $this->needRender(true);
     }
     function new_club(){
+        $this->assign('clubTypes',json_decode(TYPE_OF_CLUB));
         $this->needRender(true);
     }
     function star_clubs(){
@@ -24,15 +25,22 @@ class ClubController extends Controller
     }
     function clubList(){
         $clubCollection = new ClubCollection();
-        $condition = array();
-        $condition['page'] = 1;
-        $checkList = array('province','city','type');
-        foreach ($checkList as $value){
-            if (isset($_GET[$value])){
-                $condition[$value] = $_GET[$value];
+        if($_SERVER['REQUEST_METHOD']=='GET'){
+            $condition = array();
+            $condition['page'] = 1;
+            $checkList = array('province','city','type');
+            foreach ($checkList as $value){
+                if (isset($_GET[$value])){
+                    $condition[$value] = $_GET[$value];
+                }
             }
+            $result = $clubCollection->getClubList($condition);
+            echo json_encode($result,JSON_UNESCAPED_UNICODE);
+        }elseif ($_SERVER['REQUEST_METHOD']=='POST'){
+            $data = $_POST;
+            $data['managerid'] = $_SESSION['id'];
+            $clubCollection->createClub($data);
         }
-        $result = $clubCollection->getClubList($condition);
-        echo json_encode($result,JSON_UNESCAPED_UNICODE);
+
     }
 }

@@ -84,8 +84,29 @@ function updateContact(item) {
     });
 }
 $('.newsItem').children().find('h4').on('click',function () {
-    $(this).parents('.newsItem').find('.collapse').collapse('toggle');
+    var item = $(this);
+    item.parents('.newsItem').find('.collapse').collapse('toggle');
+    if(item.find('.icon-rd').length<=0){
+        $.ajax({
+            url:'/user/message/'+item.attr('id')+'/read',
+            type: 'post',
+            success:function (data) {
+                item.find('.icon-urd').removeClass('icon-urd').addClass('icon-rd');
+            }
+        });
+    }
 });
+function deleteMessage(item) {
+    var msItem = $(item).parents('.newsItem');
+    var id = msItem.find('h4').attr('id');
+    $.ajax({
+        url:'/user/message/'+id+'/delete',
+        type: 'post',
+        success:function (data) {
+            msItem.remove();
+        }
+    });
+}
 function showUser() {
     $('#system').hide();
     $('#user').fadeIn();

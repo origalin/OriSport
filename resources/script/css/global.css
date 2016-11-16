@@ -252,7 +252,7 @@ body{
     -ms-background-position-x: -128px;
     -ms-background-position-y: -320px;
 }
-.icon-deadline{
+.icon-time {
     background: url("/resources/img/common.png") -128px -256px;
     background-position-x: -128px;
     background-position-y: -256px;
@@ -272,6 +272,20 @@ body{
     background-position-y: -272px;
     -ms-background-position-x: -128px;
     -ms-background-position-y: -272px;
+}
+.icon-rd{
+    background: url("/resources/img/common.png") -128px -272px;
+    background-position-x: -128px;
+    background-position-y: -272px;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: -272px;
+}
+.icon-urd{
+    background: url("/resources/img/common.png") -128px -288px;
+    background-position-x: -128px;
+    background-position-y: -288px;
+    -ms-background-position-x: -128px;
+    -ms-background-position-y: -288px;
 }
 .smclubItem{
     margin-top: 10px;

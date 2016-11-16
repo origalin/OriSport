@@ -42,7 +42,7 @@
                                 <div class="col-md-12 tag-city"><span class="withIcon"><i
                                             class="icon icon-location"></i><?=$value['province']?> <?=$value['city']?></span>
                                     <span class="withIcon"><i
-                                            class="icon icon-deadline"></i><?=$value['endtime']?></span>
+                                            class="icon icon-time"></i><?=$value['starttime']?></span>
                                     <span class="withIcon"><i
                                             class="icon icon-reward"></i><?=$value['reward']?>分</span>
                                 </div>
@@ -76,7 +76,7 @@
                                 <div class="col-md-12 tag-city"><span class="withIcon"><i
                                             class="icon icon-location"></i><?=$value['province']?> <?=$value['city']?></span>
                                     <span class="withIcon"><i
-                                            class="icon icon-deadline"></i><?=$value['endtime']?></span>
+                                            class="icon icon-time"></i><?=$value['starttime']?></span>
                                     <span class="withIcon"><i
                                             class="icon icon-reward"></i><?=$value['reward']?>分</span>
                                 </div>

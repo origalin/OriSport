@@ -9,6 +9,7 @@ define('DB_ROOT', 'resources/OriSport.db');
 define('PAGE_NOTLOGIN', '/errors/nologin');
 define('PAGE_LOGINFAIL','/errors/login_fail');
 define('PAGE_DEFAULE','/personal/sport_data');
+define('PAGE_AFTERRACE','/race/my_races');
 
 define('RACE_MINE','i_create');
 define('RACE_JOIN','i_join');

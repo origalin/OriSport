@@ -46,4 +46,19 @@ class UserController extends Controller
         $user->updateUserData($data);
         echo '{"result":"http://'.$_SERVER['HTTP_HOST'].'/runtime/files/' . $_FILES["avatar_file"]["name"].'"}';
     }
+    function message($data){
+        $messageId = $data[0];
+        $message = new Message($messageId);
+        $action = $data[1];
+        switch ($action){
+            case 'read':
+                $message->markRead();
+                break;
+            case 'delete':
+                $message->delete();
+                break;
+            default:
+                break;
+        }
+    }
 }

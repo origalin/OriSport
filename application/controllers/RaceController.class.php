@@ -21,6 +21,7 @@ class RaceController extends Controller
         $this->needRender(true);
     }
     function new_race(){
+        $this->assign('raceTypes',json_decode(TYPE_OF_RACE));
         $this->needRender(true);
     }
     function race_detail($data){
@@ -45,15 +46,23 @@ class RaceController extends Controller
     }
     function raceList(){
         $raceCollection = new RaceCollection();
-        $condition = array();
-        $condition['page'] = 1;
-        $checkList = array('province','city','type');
-        foreach ($checkList as $value){
-            if (isset($_GET[$value])){
-                $condition[$value] = $_GET[$value];
+        if($_SERVER['REQUEST_METHOD']=='GET'){
+            $condition = array();
+            $condition['page'] = 1;
+            $checkList = array('province','city','type');
+            foreach ($checkList as $value){
+                if (isset($_GET[$value])){
+                    $condition[$value] = $_GET[$value];
+                }
             }
+            $result = $raceCollection->getRaceList($condition);
+            echo json_encode($result,JSON_UNESCAPED_UNICODE);
+        }elseif ($_SERVER['REQUEST_METHOD']=='POST'){
+            $data = $_POST;
+            $data['createrid'] = $_SESSION['id'];
+            $raceCollection->createRace($data);
+            @header("location:".PAGE_AFTERRACE);
         }
-        $result = $raceCollection->getRaceList($condition);
-        echo json_encode($result,JSON_UNESCAPED_UNICODE);
+
     }
 }

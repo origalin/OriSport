@@ -49,7 +49,7 @@
                             <p><a href="/people/his_data/<?= $value['createrid'] ?>"><?= $value['creatername'] ?>:</a>
                             </p>
                             <p><?= $value['contex'] ?></p>
-                            <p class="withIcon pull-right"><span class="icon icon-deadline"></span><?= $value['time'] ?>
+                            <p class="withIcon pull-right"><span class="icon icon-time"></span><?= $value['time'] ?>
                             </p>
                         </div>
                     </div>

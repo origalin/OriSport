@@ -14,36 +14,42 @@
     <div class="row pageInner">
         <div class="col-md-12">
 
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="/club/clubList" method="post">
                 <div class="form-group ">
                     <label for="name" class="col-sm-2 control-label">俱乐部名称</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="name"
+                        <input type="text" class="form-control" id="name" name="name"
                                value="">
                     </div>
                 </div>
                 <div class="form-group ">
-                    <label for="name" class="col-sm-2 control-label">俱乐部城市</label>
+                    <label for="province" class="col-sm-2 control-label">俱乐部城市</label>
                     <div class="col-md-4 col-xs-8 select">
                         <select class="province cxselect form-control"
-                                data-first-title="选择省" title="province"></select>
+                                data-first-title="选择省" title="province" id="province" name="province"></select>
                         <select class="city cxselect form-control"
-                                data-first-title="选择市" title="city"></select>
+                                data-first-title="选择市" title="city" id="city" name="city"></select>
                     </div>
                 </div>
                 <div class="form-group ">
-                    <label for="name" class="col-sm-2 control-label">俱乐部类型</label>
+                    <label for="type" class="col-sm-2 control-label">俱乐部类型</label>
                     <div class="col-sm-4">
-                        <select class="form-control" id="privacy">
-                            <option id="public">线上</option>
-                            <option id="private">线下</option>
+                        <select class="form-control" id="type" name="type">
+                            <option value="1" style="color: #b6b6b6" disabled selected>-选择类型-</option>
+                            <?php
+                            foreach($clubTypes as $value){
+                                ?>
+                                <option><?=$value?></option>
+                                <?php
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>
                 <div class="form-group ">
-                    <label for="name" class="col-sm-2 control-label">俱乐部介绍</label>
+                    <label for="description" class="col-sm-2 control-label">俱乐部介绍</label>
                     <div class="col-sm-4">
-                        <textarea class="form-control" id="name"></textarea>
+                        <textarea class="form-control" id="description" name="description"></textarea>
                     </div>
                 </div>
                 <div class="form-group ">

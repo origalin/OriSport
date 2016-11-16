@@ -54,7 +54,13 @@
                     <div class="row newsItem">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4><span>图</span><?=$value['title']?></h4>
+                                <h4 class="withIcon" id="<?=$value['id']?>"><span class="icon <?php
+                                    if($value['read']){
+                                        echo 'icon-rd';
+                                    }else{
+                                        echo 'icon-urd';
+                                    }
+                                    ?>"></span><?=$value['title']?></h4>
                             </div>
                             <div class="col-md-6">
                                 <h5>from:<a href="/people/his_data/<?=$value['senderid']?>"><?=$value['sendername']?></a><span class="pull-right"><?=$value['time']?></span></h5>
@@ -65,7 +71,7 @@
                                 <h5><?=$value['contex']?></h5>
                             </div>
                             <div class="col-md-1 col-xs-1">
-                                <button class="glyphicon glyphicon-remove iconButton"></button>
+                                <button class="glyphicon glyphicon-remove iconButton" onclick="deleteMessage(this)"></button>
                             </div>
                         </div>
                     </div>

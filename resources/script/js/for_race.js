@@ -60,7 +60,7 @@ function updateRaceField(raceList) {
             '</div>' +
             '<div class="row">' +
             '<div class="col-md-12 tag-city"><span class="withIcon"><i class="icon icon-location"></i>'+raceList[i]["province"]+' '+raceList[i]["city"]+'</span>' +
-            '<span class="withIcon"><i class="icon icon-deadline"></i>'+raceList[i]["endtime"]+'</span>' +
+            '<span class="withIcon"><i class="icon icon-time"></i>'+raceList[i]["starttime"]+'</span>' +
             '<span class="withIcon"><i class="icon icon-reward"></i>'+raceList[i]["reward"]+'分</span>' +
             '</div>' +
             '</div>' +
