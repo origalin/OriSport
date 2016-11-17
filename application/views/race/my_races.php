@@ -45,7 +45,7 @@
                                 <div class="col-md-12"><p><?=$value['description']?></p></div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 tag-city"><span class="withIcon"><i
+                                <div class="col-md-12 tags"><span class="withIcon"><i
                                             class="icon icon-location"></i><?=$value['province']?> <?=$value['city']?></span>
                                     <span class="withIcon"><i
                                             class="icon icon-time"></i><?=$value['starttime']?></span>
@@ -79,7 +79,7 @@
                                 <div class="col-md-12"><p><?=$value['description']?></p></div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 tag-city"><span class="withIcon"><i
+                                <div class="col-md-12 tags"><span class="withIcon"><i
                                             class="icon icon-location"></i><?=$value['province']?> <?=$value['city']?></span>
                                     <span class="withIcon"><i
                                             class="icon icon-time"></i><?=$value['starttime']?></span>

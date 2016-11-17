@@ -11,4 +11,5 @@
 <script src='/resources/script/js/moment-with-locales.js'></script>
 <script src='/resources/script/js/bootstrap-datetimepicker.js'></script>
 <script src="/resources/script/js/jquery.cxselect.min.js"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=AVhx7BqVE6fjg8y0Ydqy1I83fFPnXVe2" type="text/javascript"></script>
 <script src="/resources/script/js/for_race.js"></script>

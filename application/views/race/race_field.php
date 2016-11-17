@@ -16,7 +16,7 @@
                 <select class="city cxselect cxselect-sm form-control"
                         data-first-title="-选择市-" title="city" id="city" onchange="screenRace()"></select>
                 <select class="cxselect cxselect-sm form-control" id="type" onchange="screenRace()">
-                    <option value="1" style="color: #b6b6b6" disabled selected>-选择类型-</option>
+                    <option value="1" selected>-全部类型-</option>
                     <?php
                     foreach($raceTypes as $value){
                         ?>
@@ -45,7 +45,7 @@
                                 <div class="col-md-12"><p><?=$value['description']?></p></div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 tag-city"><span class="withIcon"><i
+                                <div class="col-md-12 tags"><span class="withIcon"><i
                                             class="icon icon-location"></i><?=$value['province']?> <?=$value['city']?></span>
                                     <span class="withIcon"><i
                                             class="icon icon-time"></i><?=$value['starttime']?></span>

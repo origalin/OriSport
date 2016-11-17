@@ -40,14 +40,14 @@ function updateRaceField(clubList) {
             '<div class="col-md-12">' +
             '<div class="row">' +
             '<div class="col-md-8">' +
-            '<h3><a href="/race/race_detail/'+clubList[i]["id"]+'">'+clubList[i]["name"]+'</a><span class="tag-sm">'+clubList[i]["type"]+'</span></h3>' +
+            '<h3><a href="/in_club/clubs/'+clubList[i]["id"]+'">'+clubList[i]["name"]+'</a><span class="tag-sm">'+clubList[i]["type"]+'</span></h3>' +
             '</div>' +
             '</div>' +
             '<div class="row">' +
             '<div class="col-md-12"><p>'+clubList[i]["description"]+'</p></div>' +
             '</div>' +
             '<div class="row">' +
-            '<div class="col-md-12 tag-city"><span class="withIcon"><i class="icon icon-location"></i>'+clubList[i]["province"]+' '+clubList[i]["city"]+'</span>' +
+            '<div class="col-md-12 tags"><span class="withIcon"><i class="icon icon-location"></i>'+clubList[i]["province"]+' '+clubList[i]["city"]+'</span>' +
             '<span class="withIcon"><i class="icon icon-reward"></i>'+clubList[i]["membernum"]+'人</span>' +
             '</div>' +
             '</div>' +

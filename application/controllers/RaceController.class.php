@@ -31,8 +31,22 @@ class RaceController extends Controller
         $raceData = $race->getDetail();
         $this->assign('raceData',$raceData);
 
-        $accessPrivilege = $user->getAccessPrivilege($this->_controller,$this->_action,$raceId);
-        $this->assign('accessPrivilege',$accessPrivilege);
+        $level = $user->getAccessPrivilege($this->_controller,$this->_action,$raceId);
+        $generator = new RaceNotStartGenerator($level);
+        switch ($raceData){
+            case RACE_NOTSTART:
+                $generator = new RaceNotStartGenerator($level);
+                break;
+            case RACE_RUNNING:
+                $generator = new RaceRunningGenerator($level);
+                break;
+            case RACE_ENDED:
+                $generator = new RaceEndedGenerator($level);
+                break;
+            default:
+                break;
+        }
+        $this->assign('generator',$generator);
 
 
         $this->needRender(true);

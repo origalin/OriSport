@@ -49,7 +49,7 @@
                 <select class="city cxselect cxselect-sm form-control"
                         data-first-title="-选择市-" title="city" id="city" onchange="screenClub()"></select>
                 <select class="cxselect cxselect-sm form-control" id="type" onchange="screenClub()">
-                    <option value="1" style="color: #b6b6b6" disabled selected>-选择类型-</option>
+                    <option value="1"  selected>-全部类型-</option>
                     <?php
                     foreach($clubTypes as $value){
                         ?>

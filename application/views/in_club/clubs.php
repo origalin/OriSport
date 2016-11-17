@@ -8,7 +8,7 @@
 ?>
 <div class="col-md-2 inPage-sm">
     <div class="row pageInner-sm">
-        <button class="btn btn-sm btn-success searchStarter">邀请成员</button>
+        <?=$generator->generateJoinZone()?>
     </div>
     <div class="pageInner">
         <p>成员</p>
@@ -59,18 +59,11 @@
             ?>
 
         </div>
-        <div class="form-group">
-            <textarea id="textPanel" rows="4" placeholder="请留言" class="form-control"></textarea>
-        </div>
-        <button class="btn btn-success pull-right">提交</button>
+        <?=$generator->generateChatZone()?>
     </div>
 </div>
 <div class="col-md-2 inPage-sm">
-    <div class="row pageInner-sm">
-        <button class="btn btn-sm btn-success" data-toggle="modal"
-                data-target="#nPublicModal">添加公告
-        </button>
-    </div>
+    <?=$generator->generatePubZone()?>
     <?php
     if (count($pub) == 0) {
         echo "<div class='pageInner-sm'>暂无</div>";

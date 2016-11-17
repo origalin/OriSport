@@ -13,3 +13,6 @@ body{
 #join{
     display: none;
 }
+.map{
+    height: 250px;
+}

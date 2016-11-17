@@ -17,7 +17,6 @@ function loadClass($class)
     $tables = 'application/models/table/' . $class . '.table.php';
     $interfaces = 'application/models/interface/' . $class . '.class.php';
     $views = 'application/views/' . $class . '.class.php';
-
     if (file_exists($frameworks)) {
         // 加载框架核心类
         include $frameworks;
