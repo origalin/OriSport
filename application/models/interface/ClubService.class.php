@@ -16,4 +16,5 @@ interface ClubService
     function addPub($data);
     function join($uid);
     function leave($uid);
+    function invite($senderId,$ids);
 }

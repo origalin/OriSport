@@ -16,8 +16,9 @@ class ClubGenerator extends ViewGenerator
     function generateJoinZone()
     {
         $resultTb = array();
-        $resultTb[LEVEL_USER] = '<button class="btn btn-sm btn-success">加入俱乐部</button>';
-        $resultTb[LEVEL_INSIDER] = '<button class="btn btn-sm btn-success searchStarter">邀请成员</button>';
+        $resultTb[LEVEL_USER] = '<button class="btn btn-sm btn-success" onclick="joinClub()">加入俱乐部</button>';
+        $resultTb[LEVEL_INSIDER] = '<button class="btn btn-sm btn-danger" onclick="leaveClub()">离开俱乐部</button>';
+        $resultTb[LEVEL_OWNER] = '<button class="btn btn-sm btn-success searchStarter">邀请成员</button>';
         return $this->getResult($resultTb);
     }
 
@@ -33,7 +34,7 @@ class ClubGenerator extends ViewGenerator
         $resultTb = array();
         $resultTb[LEVEL_USER] = '<div class="col-md-12"><p>加入俱乐部后才可发言</p></div>';
         $resultTb[LEVEL_INSIDER] = '<div class="form-group"><textarea id="textPanel" rows="4" placeholder="请留言" class="form-control">'.
-        '</textarea></div><button class="btn btn-success pull-right">提交</button>';
+        '</textarea></div><button class="btn btn-success pull-right" onclick="addChat()">提交</button>';
         return $this->getResult($resultTb);
     }
 }

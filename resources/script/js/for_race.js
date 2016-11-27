@@ -68,11 +68,77 @@ function updateRaceField(raceList) {
             '</div>');
     }
 }
+function joinRace() {
+    $.ajax({
+        url: window.location.pathname,
+        type: 'post',
+        data: {
+            type:'join'
+        },
+        success: function (data) {
+            location.reload();
+        },
+        error: function () {
+            alert('出错了，更改无法保存')
+        }
+    });
+}
+function leaveRace() {
+    $.ajax({
+        url: window.location.pathname,
+        type: 'post',
+        data: {
+            type:'leave'
+        },
+        success: function (data) {
+            location.reload();
+        },
+        error: function () {
+            alert('出错了，更改无法保存')
+        }
+    });
+}
+function endRace(item) {
+    var id = $(item).attr('id');
+    $.ajax({
+        url: window.location.pathname,
+        type: 'post',
+        data: {
+            type:'end',
+            winnerid:id
+        },
+        success: function (data) {
+            location.reload();
+        },
+        error: function () {
+            alert('出错了，更改无法保存')
+        }
+    });
+}
 function showMap() {
     if($('#map').css('display')=='none'){
 
     }
     $('#map').toggle();
+}
+function handleConfirm() {
+    var ids = getSelectedId();
+    var data = {
+        type:'invite',
+        ids:ids
+    };
+    $.ajax({
+        url:window.location.pathname,
+        type:'post',
+        data:data,
+        success:function (data) {
+            alert('邀请成功');
+            location.reload();
+        },
+        error:function () {
+
+        }
+    });
 }
 $(function () {
     if($('#map').length>0){
@@ -91,5 +157,27 @@ $(function () {
                 map.addOverlay(new BMap.Marker(point));
             }
         }, city);
+    }
+    if($('#endRace').length>0){
+        var trs = '';
+        for(var i = 0;i<joiners.length;i++){
+            trs+='<tr><td id="'+joiners[i].id+'" onclick="endRace(this)">'+joiners[i].name+'</td></tr>';
+        }
+        var settings = {
+            trigger : 'click',
+            width : 300,
+            multi : false,
+            closeable : true,
+            style : '',
+            padding : true,
+            title : '选择优胜者',
+            content : '<div><table class="table table-hover"><thead></thead><tbody>'+trs+'</tbody></table></div>'
+        };
+        $('#endRace').webuiPopover(
+            $.extend({}, settings));
+    }
+    if($('#winner').length>0){
+        $('#winner').find('a').attr('href','/people/his_data/'+winner.id);
+        $('#winner').find('a').text(winner.name);
     }
 });

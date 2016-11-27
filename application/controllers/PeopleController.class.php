@@ -25,6 +25,8 @@ class PeopleController extends Controller
         $this->assign('totalReward',$myReward);
         $this->assign('joinNum',$myRacesNum[RACE_JOIN]);
         $this->assign('mineNum',$myRacesNum[RACE_MINE]);
+        $user = new User($uid);
+        $this->assign('userData',$user->getUserData());
         $this->needRender(true);
     }
     function his_club($data){
@@ -32,6 +34,8 @@ class PeopleController extends Controller
         $clubCollection = new ClubCollection();
         $this->assign('userJoined',$clubCollection->getUserJoinedClub($uid));
         $this->assign('userCreated',$clubCollection->getUserCreatedClub($uid));
+        $user = new User($uid);
+        $this->assign('userData',$user->getUserData());
         $this->needRender(true);
     }
 }

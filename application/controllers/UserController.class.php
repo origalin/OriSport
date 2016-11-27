@@ -18,7 +18,8 @@ class UserController extends Controller
         $this->assign('userData',$user->getUserData());
         $this->needRender(true);
     }
-    function search_result($key){
+    function search_result(){
+        $key  = $_POST['key'];
         $userModel = new UserCollection();
         $results = $userModel->searchUsers($key);
         echo json_encode($results,JSON_UNESCAPED_UNICODE);
@@ -36,15 +37,19 @@ class UserController extends Controller
         $width = $crop->width;
         $rotate = $crop->rotate;
         require_once appRoot.'/resources/lib/PHPThumb/ThumbLib.inc.php';
-        move_uploaded_file($_FILES["avatar_file"]["tmp_name"], "runtime/files/" . $_FILES["avatar_file"]["name"]);
-        $thumb = PhpThumbFactory::create("runtime/files/" . $_FILES["avatar_file"]["name"]);
+        $path = PORTRAIT_ROOT .$_SESSION['id'].'-'. $_FILES["avatar_file"]["name"];
+        move_uploaded_file($_FILES["avatar_file"]["tmp_name"], $path);
+        $thumb = PhpThumbFactory::create($path);
         $thumb->crop($x, $y, $height, $width);
         $thumb->rotateImageNDegrees($rotate);
-        $thumb->save( 'runtime/files/' . $_FILES["avatar_file"]["name"]);
+        $thumb->resize(200,200);
+        $thumb->save($path);
         $user = new User($_SESSION['id']);
-        $data = array('portrait'=>$_FILES["avatar_file"]["name"]);
+        $originPortrait = appRoot.$user->getUserData()['portrait'];
+        unlink($originPortrait);
+        $data = array('portrait'=>'/'.$path);
         $user->updateUserData($data);
-        echo '{"result":"http://'.$_SERVER['HTTP_HOST'].'/runtime/files/' . $_FILES["avatar_file"]["name"].'"}';
+        echo '{"result":"http://'.$_SERVER['HTTP_HOST'].'/'.$path.'"}';
     }
     function message($data){
         $messageId = $data[0];

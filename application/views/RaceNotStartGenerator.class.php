@@ -24,8 +24,8 @@ class RaceNotStartGenerator extends ViewGenerator implements RaceGeneratorServic
     {
         // TODO: Implement genarateJoinZone() method.
         $resultTb = array();
-        $resultTb[LEVEL_USER] = '<p><button class="btn btn-success">加入比赛</button></p>';
-        $resultTb[LEVEL_INSIDER] = '<p><button class="btn btn-success disabled">已加入</button></p>';
+        $resultTb[LEVEL_USER] = '<p><button class="btn btn-success" onclick="joinRace()">加入比赛</button></p>';
+        $resultTb[LEVEL_INSIDER] = '<p><button class="btn btn-sm btn-danger" onclick="leaveRace()">已加入,离开比赛？</button></p>';
         $resultTb[LEVEL_OWNER] = '<p><button class="btn btn-success searchStarter">邀请参赛者</button></p>';
         return $this->getResult($resultTb);
     }

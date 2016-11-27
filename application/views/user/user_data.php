@@ -11,7 +11,7 @@
         <div class="row">
             <div id="crop-avatar" class="col-md-6">
                 <div data-original-title="Change Logo Picture" class="avatar-view" title="">
-                    <img src="/runtime/files/<?=$userData['portrait']?>" alt="Logo">
+                    <img src="<?=$userData['portrait']?>" alt="Logo">
                 </div>
             </div>
         </div>
@@ -85,9 +85,9 @@
                                     <div class="avatar-wrapper"></div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="avatar-preview preview-lg"><img src="/runtime/files/<?=$userData['portrait']?>"></div>
-                                    <div class="avatar-preview preview-md"><img src="/runtime/files/<?=$userData['portrait']?>"></div>
-                                    <div class="avatar-preview preview-sm"><img src="/runtime/files/<?=$userData['portrait']?>"></div>
+                                    <div class="avatar-preview preview-lg"><img src="<?=$userData['portrait']?>"></div>
+                                    <div class="avatar-preview preview-md"><img src="<?=$userData['portrait']?>"></div>
+                                    <div class="avatar-preview preview-sm"><img src="<?=$userData['portrait']?>"></div>
                                 </div>
                             </div>
                             <div class="row avatar-btns">

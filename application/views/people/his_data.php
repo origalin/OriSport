@@ -9,7 +9,7 @@
 <div class="col-md-10 inPage">
     <div class="row pageInner">
         <div class="row">
-            <img src="" alt="Responsive image" width="200px" height="200px">
+            <img class="img-thumbnail" src="<?=$userData['portrait']?>" alt="Responsive image" width="200px" height="200px">
         </div>
         <h2><?= $userData['username'] ?></h2>
     </div>

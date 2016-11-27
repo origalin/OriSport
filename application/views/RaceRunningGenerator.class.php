@@ -17,7 +17,7 @@ class RaceRunningGenerator extends ViewGenerator implements RaceGeneratorService
         // TODO: Implement genarateWinZone() method.
         $resultTb = array();
         $resultTb[LEVEL_USER] = '<p>请等待比赛结果</p>';
-        $resultTb[LEVEL_OWNER] = '<p><button class="btn btn-success">结束比赛</button>选择冠军以结束比赛</p>';
+        $resultTb[LEVEL_OWNER] = '<p><button class="btn btn-success" id="endRace">结束比赛</button>选择冠军以结束比赛</p>';
         return $this->getResult($resultTb);
     }
 

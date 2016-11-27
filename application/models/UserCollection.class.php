@@ -51,7 +51,15 @@ class UserCollection implements UserCollectionService
     {
         // TODO: Implement searchUsers() method.
         $userDataTb = new UserData();
-        $results = $userDataTb->search('username',$key);
+        $users = $userDataTb->search('username',$key);
+        $results = array();
+        foreach ($users as $value){
+            $user = array();
+            $user['id'] = $value['id'];
+            $user['username'] = $value['username'];
+            $user['portrait'] = $value['portrait'];
+            $results[]=$user;
+        }
         return $results;
     }
 

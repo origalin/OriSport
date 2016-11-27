@@ -47,6 +47,7 @@ class Club implements ClubService
     {
         // TODO: Implement addChat() method.
         $data["clubid"] = $this->id;
+        $data['time'] = date(FORMAT_TIME);
         $chatOfClub = new MessageOfClub();
         $chatOfClub->insert($data);
     }
@@ -55,6 +56,7 @@ class Club implements ClubService
     {
         // TODO: Implement addPub() method.
         $data["clubid"] = $this->id;
+        $data['time'] = date(FORMAT_TIME);
         $pubOfClub = new PublicOfClub();
         $pubOfClub->insert($data);
     }
@@ -65,6 +67,10 @@ class Club implements ClubService
         $userInClubTb = new UserInClub();
         $data = array('uid'=>$uid,'clubid'=>$this->id);
         $userInClubTb->insert($data);
+        $clubTb = new ClubData();
+        $oldNum = $clubTb->findById($this->id)['membernum'];
+        $numData = array('membernum'=>++$oldNum);
+        $clubTb->update($this->id,$numData);
     }
 
     function leave($uid)
@@ -73,6 +79,10 @@ class Club implements ClubService
         $userInClubTb = new UserInClub();
         $data = array('uid'=>$uid,'clubid'=>$this->id);
         $userInClubTb->delete($data);
+        $clubTb = new ClubData();
+        $oldNum = $clubTb->findById($this->id)['membernum'];
+        $numData = array('membernum'=>--$oldNum);
+        $clubTb->update($this->id,$numData);
     }
 
     function getMember()
@@ -89,5 +99,20 @@ class Club implements ClubService
             $result[]=$item;
         }
         return $result;
+    }
+
+    function invite($senderId, $ids)
+    {
+        // TODO: Implement invite() method.
+        $messageTb = new MessageData();
+        foreach ($ids as $value){
+            $message = array();
+            $message['senderid'] = $senderId;
+            $message['receiverid'] = $value;
+            $message['title'] = '俱乐部邀请';
+            $message['contex'] = '我邀请你加入我们的俱乐部：<a href="'.CLUB_ROOT.$this->id.'">点击查看</a>，快来加入吧！';
+            $message['time'] = date(FORMAT_TIME);
+            $messageTb->insert($message);
+        }
     }
 }

@@ -9,7 +9,8 @@
 interface RaceService
 {
     function getDetail();
-    function end();
+    function end($winnerId);
     function join($uid);
     function leave($uid);
+    function invite($senderId,$ids);
 }

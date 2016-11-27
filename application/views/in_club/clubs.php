@@ -107,7 +107,7 @@
                 <button type="button" class="btn btn-default"
                         data-dismiss="modal">取消
                 </button>
-                <button type="button" class="btn btn-success" id="confirmInvite">确认邀请</button>
+                <button type="button" class="btn btn-success" onclick="addPub()">发布公告</button>
             </div>
         </div>
     </div>

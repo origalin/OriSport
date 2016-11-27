@@ -25,31 +25,53 @@ class RaceController extends Controller
         $this->needRender(true);
     }
     function race_detail($data){
-        $raceId = $data[0];
-        $race = new Race($raceId);
-        $user = new User($_SESSION['id']);
-        $raceData = $race->getDetail();
-        $this->assign('raceData',$raceData);
+        if($_SERVER['REQUEST_METHOD']=='GET'){
+            $raceId = $data[0];
+            $race = new Race($raceId);
+            $user = new User($_SESSION['id']);
+            $raceData = $race->getDetail();
+            $this->assign('raceData',$raceData);
 
-        $level = $user->getAccessPrivilege($this->_controller,$this->_action,$raceId);
-        $generator = new RaceNotStartGenerator($level);
-        switch ($raceData){
-            case RACE_NOTSTART:
-                $generator = new RaceNotStartGenerator($level);
-                break;
-            case RACE_RUNNING:
-                $generator = new RaceRunningGenerator($level);
-                break;
-            case RACE_ENDED:
-                $generator = new RaceEndedGenerator($level);
-                break;
-            default:
-                break;
+            $level = $user->getAccessPrivilege($this->_controller,$this->_action,$raceId);
+            $generator = new RaceNotStartGenerator($level);
+            switch ($raceData['state']){
+                case RACE_NOTSTART:
+                    $generator = new RaceNotStartGenerator($level);
+                    break;
+                case RACE_RUNNING:
+                    $generator = new RaceRunningGenerator($level);
+                    break;
+                case RACE_ENDED:
+                    $generator = new RaceEndedGenerator($level);
+                    break;
+                default:
+                    break;
+            }
+            $this->assign('generator',$generator);
+            $this->needRender(true);
+
+        }elseif ($_SERVER['REQUEST_METHOD']=='POST'){
+            $raceId = $data[0];
+            $race = new Race($raceId);
+            $type = $_POST['type'];
+            switch ($type){
+                case 'join':
+                    $race->join($_SESSION['id']);
+                    break;
+                case 'leave':
+                    $race->leave($_SESSION['id']);
+                    break;
+                case 'end':
+                    $winnerId = $_POST['winnerid'];
+                    $race->end($winnerId);
+                    break;
+                case 'invite':
+                    $race->invite($_SESSION['id'],$_POST['ids']);
+                    break;
+                default:
+                    break;
+            }
         }
-        $this->assign('generator',$generator);
-
-
-        $this->needRender(true);
     }
     function race_field(){
         $raceCollection = new RaceCollection();

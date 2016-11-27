@@ -6,6 +6,9 @@
  * Time: 16:20
  */
 define('DB_ROOT', 'resources/OriSport.db');
+define('PORTRAIT_ROOT','runtime/files/');
+define('RACE_ROOT','/race/race_detail/');
+define('CLUB_ROOT','/in_club/clubs/');
 define('PAGE_NOTLOGIN', '/errors/nologin');
 define('PAGE_LOGINFAIL','/errors/login_fail');
 define('PAGE_DEFAULE','/personal/sport_data');

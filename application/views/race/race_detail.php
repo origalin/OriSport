@@ -21,7 +21,9 @@
                 class="icon icon-location"></span><?= $raceData['province'] ?> <?= $raceData['city'] ?> <?= $raceData['location'] ?>
         </p>
         <div class="row">
-            <div class="col-md-4"><div class="map" id="map"></div></div>
+            <div class="col-md-4">
+                <div class="map" id="map"></div>
+            </div>
             <div class="col-md-6">
                 <p><?= $raceData['description'] ?></p>
                 <p>开始时间：<?= $raceData['starttime'] ?></p>
@@ -30,13 +32,39 @@
         </div>
 
 
-
     </div>
     <div class="row pageInner">
-        <p>参与者：<a><?= $raceData['creatername'] ?>(发起人)</a></p>
+        <p>参与者：<a href="/people/his_data/<?= $raceData['createrid'] ?>"><?= $raceData['creatername'] ?></a>(发起人)
+            <?php
+            foreach ($raceData['joiners'] as $value) {
+                ?>
+                <a href="/people/his_data/<?= $value['uid'] ?>"><?= $value['username'] ?></a>
+                <?php
+            }
+            ?></p>
         <?= $generator->generateJoinZone() ?>
         <?= $generator->generateWinZone() ?>
     </div>
+    <script>
+        var joiners = [{
+            id: '<?=$raceData['createrid']?>',
+            name: '<?=$raceData['creatername']?>'
+        }<?php
+            foreach($raceData['joiners'] as $value){
+            ?>
+            , {
+                id: '<?= $value['uid'] ?>',
+                name: '<?= $value['username'] ?>'
+            }
+            <?php
+            }
+            ?>
+        ];
+        var winner = {
+            id: '<?=$raceData['winner']?>',
+            name:'<?=$raceData['winnername']?>'
+        };
+    </script>
 </div>
 
 

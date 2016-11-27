@@ -43,8 +43,12 @@ class Table
         return $this->generateResult($results);
     }
     function search($name,$value){
-        $results = $this->db->query("select * from " . $this->tableName . " where ".$name." like  '%" . $value. "%'");
-        return $this->generateResult($results);
+        if($value!=''){
+            $results = $this->db->query("select * from " . $this->tableName . " where ".$name." like  '%" . $value. "%'");
+            return $this->generateResult($results);
+        }else{
+            return array();
+        }
     }
     function deleteById($id){
         $this->db->exec("delete from " . $this->tableName . " where id = '" . $id. "'");
