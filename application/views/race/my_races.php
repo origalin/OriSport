@@ -11,7 +11,7 @@
         <div class="col-md-8">
             <p>您已参与<span class="bNums"><?= $joinNum ?></span>个竞赛</p>
             <p>已发起<span class="bNums"><?= $mineNum ?></span>个竞赛</p>
-            <p>已获得奖励<span class="bNums"><?= $totalReward ?></span>元</p>
+            <p>已获得奖励<span class="bNums"><?= $totalReward ?></span>积分</p>
         </div>
     </div>
     <div class="row pageInner">

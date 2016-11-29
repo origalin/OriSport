@@ -10,7 +10,7 @@
     <div class="row pageInner">
         <div class="col-md-1 searchLabel"><label for="searchUser">搜索：</label></div>
         <div class="col-md-11">
-            <input id="searchUser" name="searchUser" class="form-control">
+            <input id="searchUser" name="searchUser" class="form-control" oninput="searchUser()">
         </div>
     </div>
     <div class="row pageInner">
@@ -20,22 +20,20 @@
                 用户名
             </th>
             <th>
-                注册时间
+                注册日期
             </th>
             <th>
-                等级
+                积分数
             </th>
             </thead>
-            <tbody>
+            <tbody id="userTb">
             <tr>
                 <td>
-                    <a>origalin</a>
                 </td>
                 <td>
-                    2006/12/12 12:22
+                    输入名称以搜索
                 </td>
                 <td>
-                    12
                 </td>
             </tr>
             </tbody>

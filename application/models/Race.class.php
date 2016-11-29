@@ -20,12 +20,15 @@ class Race implements RaceService
         $raceTb = new RaceData();
         $userInRaceTb = new UserInRace();
         $accountTb = new Account();
+        $userTb = new UserData();
         $raceData =$raceTb->findById($this->id);
         $raceData['joiners'] = $userInRaceTb->find('raceid',$this->id);
         for($i = 0;$i<count($raceData['joiners']);$i++){
             $raceData['joiners'][$i]['username'] = $accountTb->findById($raceData['joiners'][$i]['uid'])['username'];
+            $raceData['joiners'][$i]['portrait'] = $userTb->findById($raceData['joiners'][$i]['uid'])['portrait'];
         }
         $raceData['creatername'] = $accountTb->findById($raceData['createrid'])['username'];
+        $raceData['createrportrait'] = $userTb->findById($raceData['createrid'])['portrait'];
         if($raceData['winner']!=NULL){
             $raceData['winnername'] = $accountTb->findById($raceData['winner'])['username'];
         }else{
@@ -40,6 +43,9 @@ class Race implements RaceService
         $raceTb = new RaceData();
         $data = array('state'=>RACE_ENDED,'winner'=>$winnerId);
         $raceTb->update($this->id,$data);
+        $userTb = new UserData();
+        $newPoint = $userTb->findById($winnerId)['point']+$this->getDetail()['reward'];
+        $userTb->update($winnerId,array('point'=>$newPoint));
     }
 
     function join($uid)

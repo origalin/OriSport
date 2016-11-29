@@ -10,7 +10,7 @@
     <div class="row pageInner">
         <div class="col-md-1 searchLabel"><label for="searchUser">搜索：</label></div>
         <div class="col-md-11">
-            <input id="searchUser" name="searchUser" class="form-control">
+            <input id="searchRace" name="searchRace" class="form-control" oninput="searchRace()">
         </div>
     </div>
     <div class="row pageInner">
@@ -26,16 +26,15 @@
                 当前状态
             </th>
             </thead>
-            <tbody>
+            <tbody id="raceTb">
             <tr>
                 <td>
-                    <a>XXX比赛</a>
                 </td>
                 <td>
-                    2006/12/12 12:22
+                    输入名称以搜索
                 </td>
                 <td>
-                    已结束
+
                 </td>
             </tr>
             </tbody>

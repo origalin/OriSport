@@ -20,6 +20,8 @@ class In_clubController extends Controller
             $this->assign('members',$club->getMember());
             $this->assign('chat',$club->getChat());
             $this->assign('pub',$club->getPub());
+            $this->assign('id',$clubId);
+            $this->assign('title',$club->getDetail()['name']);
             $this->needRender(true);
         }elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
             $clubId = $data[0];

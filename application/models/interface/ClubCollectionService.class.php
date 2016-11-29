@@ -13,4 +13,6 @@ interface ClubCollectionService
     function getUserJoinedClub($uid);
     function getUserCreatedClub($uid);
     function getClubActivity($uid);
+    function searchClubs($key);
+    function deleteClub($id);
 }

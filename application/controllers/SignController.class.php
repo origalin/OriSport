@@ -9,6 +9,7 @@
 class SignController extends Controller
 {
     function login(){
+        $this->assign('title','Orisport——你的运动管家');
         $this->needRender(true);
     }
     function account($type){
@@ -17,7 +18,11 @@ class SignController extends Controller
                 $user = new UserCollection();
                 $isCorrect= $user->loginVerify($_POST['username'],$_POST['password']);
                 if($isCorrect){
-                    @header("location:".PAGE_DEFAULE);
+                    if($_SESSION['role']=='manager'){
+                        @header("location:".PAGE_MANAGER);
+                    }else{
+                        @header("location:".PAGE_DEFAULE);
+                    }
                 }else{
                     @header("location:".PAGE_LOGINFAIL);
                 }
@@ -35,6 +40,12 @@ class SignController extends Controller
             default:
                 break;
         }
+    }
+    function logout(){
+        $_SESSION['id'] = NULL;
+        $_SESSION['name'] = NULL;
+        $_SESSION['role'] = NULL;
+        @header("location:".PAGE_LOGIN);
     }
     function checkLogin()
     {

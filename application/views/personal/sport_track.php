@@ -31,6 +31,7 @@
     <div class="row pageInner result">
         <span class="sportJudge disp-lg"></span>
         <p><?=$sportTrack['evaluation']?></p>
+        <p class="tips">*推荐运动时间每周7小时，且请不要过度运动哦</p>
     </div>
     <div class="row pageInner">
         <h3>以下是你近期的运动记录</h3>

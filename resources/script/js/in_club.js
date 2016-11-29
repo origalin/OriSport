@@ -91,3 +91,11 @@ function handleConfirm() {
         }
     });
 }
+function showModal(item) {
+    var pub = $(item);
+    var modal = $('#publicModal');
+    modal.find('.title').text(pub.find('.title').text());
+    modal.find('.modal-body').empty();
+    modal.find('.modal-body').append(pub.find('.text').children().clone());
+    modal.modal('toggle');
+}

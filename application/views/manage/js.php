@@ -6,4 +6,4 @@
  * Time: 15:21
  */
 ?>
-
+<script src="/resources/script/js/for_manage.js"></script>

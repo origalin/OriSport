@@ -48,10 +48,18 @@ function updateRaceField(clubList) {
             '</div>' +
             '<div class="row">' +
             '<div class="col-md-12 tags"><span class="withIcon"><i class="icon icon-location"></i>'+clubList[i]["province"]+' '+clubList[i]["city"]+'</span>' +
-            '<span class="withIcon"><i class="icon icon-reward"></i>'+clubList[i]["membernum"]+'人</span>' +
+            '<span class="withIcon"><i class="icon icon-memberNum"></i>'+clubList[i]["membernum"]+'人</span>' +
             '</div>' +
             '</div>' +
             '</div>' +
             '</div>');
     }
 }
+$().ready(function() {
+    $("#newCLub").validate({
+        submitHandler: function(form)
+        {
+            $(form).ajaxSubmit();
+        }
+    });
+});

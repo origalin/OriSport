@@ -21,7 +21,14 @@ class RaceCollection implements RaceCollectionService
     {
         // TODO: Implement createRace() method.
         $raceTb = new RaceData();
-        $raceTb->insert($data);
+        $userTb = new UserData();
+        $newPoint = $userTb->findById($data['createrid'])['point']-$data['reward'];
+        if($newPoint<0){
+            echo 'lack_of_point';
+        }else{
+            $userTb->update($data['createrid'],array('point'=>$newPoint));
+            $raceTb->insert($data);
+        }
     }
 
     function getUserRace($uid)
@@ -51,5 +58,28 @@ class RaceCollection implements RaceCollectionService
             $result+=$value['reward'];
         }
         return $result;
+    }
+
+    function searchRaces($key)
+    {
+        // TODO: Implement searchRace() method.
+        $raceTb = new RaceData();
+        $result = $raceTb->search('name',$key);
+        return $result;
+    }
+
+    function updateRace($data)
+    {
+        // TODO: Implement updateRace() method.
+        $id = $data['id'];
+        $raceTb = new RaceData();
+        $raceTb->update($id,$data);
+    }
+
+    function deleteRace($id)
+    {
+        // TODO: Implement deleteRace() method.
+        $raceTb = new RaceData();
+        $raceTb->deleteById($id);
     }
 }

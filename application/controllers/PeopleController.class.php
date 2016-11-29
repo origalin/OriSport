@@ -10,9 +10,32 @@ class PeopleController extends Controller
 {
     function his_data($data){
         $uid = $data[0];
-        $user = new User($uid);
-        $this->assign('userData',$user->getUserData());
-        $this->needRender(true);
+        if($_SERVER['REQUEST_METHOD']=='GET'){
+            $user = new User($uid);
+            $me = new User($_SESSION['id']);
+            $level = $me->getAccessPrivilege($this->_controller,$this->_action,$uid);
+
+            $this->assign('generator',new PeopleGenerator($level));
+            $this->assign('userData',$user->getUserData());
+            $this->assign('title','他的资料');
+            $this->needRender(true);
+        }elseif ($_SERVER['REQUEST_METHOD']=='POST'){
+            $me = new User($_SESSION['id']);
+            switch ($_POST['type']){
+                case 'watchHim':
+                    $me->watchHim($uid);
+                    break;
+                case 'unWatch':
+                    $me->unWatch($uid);
+                    break;
+                case 'deleteUser':
+                    $userCollection = new UserCollection();
+                    $userCollection->deleteUser($uid);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     function his_race($data){
         $uid = $data[0];
@@ -27,6 +50,7 @@ class PeopleController extends Controller
         $this->assign('mineNum',$myRacesNum[RACE_MINE]);
         $user = new User($uid);
         $this->assign('userData',$user->getUserData());
+        $this->assign('title','他的比赛');
         $this->needRender(true);
     }
     function his_club($data){
@@ -36,6 +60,7 @@ class PeopleController extends Controller
         $this->assign('userCreated',$clubCollection->getUserCreatedClub($uid));
         $user = new User($uid);
         $this->assign('userData',$user->getUserData());
+        $this->assign('title','他的俱乐部');
         $this->needRender(true);
     }
 }

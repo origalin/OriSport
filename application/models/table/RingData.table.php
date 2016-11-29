@@ -14,6 +14,10 @@ class RingData extends Table
     }
     function getLastDataOfUser($uid){
         $sql = sprintf("select * from ringdata WHERE uid = '%s' ORDER BY time DESC LIMIT 0,1",$uid);
-        return $this->query($sql)[0];
+        if(count($this->query($sql))>0){
+            return $this->query($sql)[0];
+        }else{
+            return array('id'=>'','time'=>'','path'=>'','loactionx'=>'','locationy'=>'','mode'=>'','level'=>'','rate'=>'','uid'=>'');
+        }
     }
 }

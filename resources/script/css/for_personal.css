@@ -140,3 +140,6 @@ body{
     -ms-background-position-x: -320px;
     -ms-background-position-y: 0;
 }
+.sleepGraph{
+    height: 300px;
+}

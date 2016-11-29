@@ -11,11 +11,12 @@
         <div class="row">
             <div id="crop-avatar" class="col-md-6">
                 <div data-original-title="Change Logo Picture" class="avatar-view" title="">
-                    <img src="<?=$userData['portrait']?>" alt="Logo">
+                    <img src="<?= $userData['portrait'] ?>" alt="Logo">
                 </div>
             </div>
         </div>
         <h2><?= $userData['username'] ?></h2>
+        <p>积分：<?= $userData['point'] ?></p>
     </div>
     <div id="bodyData" class="row pageInner">
         <div class="editTool editTool-sp">
@@ -23,11 +24,13 @@
         </div>
 
         <div>
-            <p>身高：<span class="mayHide" id="height_h"><?= $userData['height'] ?></span><input class="form-control input-sm mayChange" name="height" id="height">cm
+            <p>身高：<span class="mayHide" id="height_h"><?= $userData['height'] ?></span><input
+                    class="form-control input-sm mayChange" name="height" id="height">cm
             </p>
         </div>
         <div>
-            <p>体重：<span class="mayHide" id="weight_h"><?= $userData['weight'] ?></span><input class="form-control input-sm mayChange" name="weight" id="weight">kg
+            <p>体重：<span class="mayHide" id="weight_h"><?= $userData['weight'] ?></span><input
+                    class="form-control input-sm mayChange" name="weight" id="weight">kg
             </p>
         </div>
         <div>
@@ -40,7 +43,8 @@
             <button onclick="startContactEdit(this)" class="glyphicon glyphicon-edit"></button>
         </div>
         <div>
-            <p><span>城市：</span><span class="mayHide" id="place_h"><?= $userData['city']==''?'-':$userData['province'].' '.$userData['city'] ?></span>
+            <p><span>城市：</span><span class="mayHide"
+                                     id="place_h"><?= $userData['city'] == '' ? '-' : $userData['province'] . ' ' . $userData['city'] ?></span>
                 <span class="select mayChange">
                     <select class="province cxselect cxselect-sm form-control"
                             data-first-title="选择省" title="province" id="province">
@@ -52,20 +56,42 @@
             </p>
         </div>
         <div>
-            <p>手机：<span class="mayHide" id="phone_h"><?= $userData['phone']==''?'-':$userData['phone']?></span><input class="form-control input-sm mayChange" id="phone"></p>
+            <p>手机：<span class="mayHide"
+                        id="phone_h"><?= $userData['phone'] == '' ? '-' : $userData['phone'] ?></span><input
+                    class="form-control input-sm mayChange" id="phone"></p>
         </div>
         <div>
-            <p>邮箱：<span class="mayHide" id="email_h"><?= $userData['email']==''?'-':$userData['email']?></span><input class="form-control input-sm mayChange" id="email"></p>
+            <p>邮箱：<span class="mayHide"
+                        id="email_h"><?= $userData['email'] == '' ? '-' : $userData['email'] ?></span><input
+                    class="form-control input-sm mayChange" id="email"></p>
         </div>
         <div>
-            <p>爱好：<span class="mayHide" id="hobby_h"><?= $userData['hobby']==''?'-':$userData['hobby']?></span><input class="form-control input-sm mayChange" id="hobby"></p>
+            <p>爱好：<span class="mayHide"
+                        id="hobby_h"><?= $userData['hobby'] == '' ? '-' : $userData['hobby'] ?></span><input
+                    class="form-control input-sm mayChange" id="hobby"></p>
         </div>
         <div style="display: flex">
-            <span>个人签名：<span class="mayHide" id="description_h"><?= $userData['description']==''?'-':$userData['description']?></span></span><textarea
+            <span>个人签名：<span class="mayHide"
+                             id="description_h"><?= $userData['description'] == '' ? '-' : $userData['description'] ?></span></span><textarea
                 class="form-control input-sm mayChange" id="description"></textarea>
         </div>
     </div>
-    <div style="display: none;" class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+    <div class="row pageInner">
+        <h4>关注用户</h4>
+        <?php
+        if (count($userData['watchData']) == 0) {
+            echo '<p style="text-align: center">您没有关注的用户</p>';
+        } else {
+            foreach ($userData['watchData'] as $value) {
+                ?>
+                <div class="col-md-3"><a href="/people/his_data/<?=$value['watchid']?>"><img class="portrait" src="<?=$value['watchportrait']?>"><?=$value['watchname']?></a></div>
+                <?php
+            }
+        }
+        ?>
+    </div>
+    <div style="display: none;" class="modal fade" id="avatar-modal" aria-hidden="true"
+         aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <form class="avatar-form" action="/user/portrait" enctype="multipart/form-data" method="post">
@@ -85,22 +111,31 @@
                                     <div class="avatar-wrapper"></div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="avatar-preview preview-lg"><img src="<?=$userData['portrait']?>"></div>
-                                    <div class="avatar-preview preview-md"><img src="<?=$userData['portrait']?>"></div>
-                                    <div class="avatar-preview preview-sm"><img src="<?=$userData['portrait']?>"></div>
+                                    <div class="avatar-preview preview-lg"><img src="<?= $userData['portrait'] ?>">
+                                    </div>
+                                    <div class="avatar-preview preview-md"><img src="<?= $userData['portrait'] ?>">
+                                    </div>
+                                    <div class="avatar-preview preview-sm"><img src="<?= $userData['portrait'] ?>">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row avatar-btns">
                                 <div class="col-md-9">
                                     <div class="btn-group">
-                                        <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                                        <button class="btn" data-method="rotate" data-option="-90" type="button"
+                                                title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转
+                                        </button>
                                     </div>
                                     <div class="btn-group">
-                                        <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                                        <button class="btn" data-method="rotate" data-option="90" type="button"
+                                                title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+                                    <button class="btn btn-success btn-block avatar-save" type="submit"><i
+                                            class="fa fa-save"></i> 保存修改
+                                    </button>
                                 </div>
                             </div>
                         </div>

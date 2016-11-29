@@ -140,6 +140,14 @@ function handleConfirm() {
         }
     });
 }
+$().ready(function() {
+    $("#newRace").validate({
+        submitHandler: function(form)
+        {
+            $(form).ajaxSubmit();
+        }
+    });
+});
 $(function () {
     if($('#map').length>0){
         var map = new BMap.Map("map");          // 创建地图实例

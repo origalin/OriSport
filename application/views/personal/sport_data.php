@@ -13,19 +13,20 @@
     <div class="row result pageInner">
         <div class="col-md-4">
             <span class="walk disp"></span>
-            <p>你共行走了<br><span class="bNums"><?=$sportData['totalsteps']?></span>步<br>超过了99%的用户</p>
+            <p>你共行走了<br><span class="bNums"><?=$sportData['totalsteps']?></span>步<br><?=$sportData['stepword']?></p>
         </div>
         <div class="col-md-4">
             <span class="distance disp"></span>
-            <p>你共前进了<br><span class="bNums"><?=$sportData['totaldistance']?></span>米<br>相当于xxx到xxx的距离</p>
+            <p>你共前进了<br><span class="bNums"><?=$sportData['totaldistance']?></span>米<br><?=$sportData['distanceword']?></p>
         </div>
         <div class="col-md-4">
             <span class="energe disp"></span>
-            <p>你共消耗了<br><span class="bNums"><?=$sportData['calorie']?></span>卡路里<br>相当于举起一台猫牌压路机</p>
+            <p>你共消耗了<br><span class="bNums"><?=$sportData['calorie']?></span>卡路里<br><?=$sportData['calorieword']?></p>
         </div>
     </div>
     <div class="row result pageInner">
         <span class="present disp-lg"></span>
         <p>你的表现达到了<span class="bNums">“<?=$sportData['title']?>”</span>级别</p>
+        <p class="tips">*你的表现评分会根据行进距离、卡路里消耗以及个人积分综合计算</p>
     </div>
 </div>

@@ -13,14 +13,17 @@ class ClubController extends Controller
         $this->assign('userJoined',$clubCollection->getUserJoinedClub($_SESSION['id']));
         $this->assign('userCreated',$clubCollection->getUserCreatedClub($_SESSION['id']));
         $this->assign('activities',$clubCollection->getClubActivity($_SESSION['id']));
+        $this->assign('title','我的俱乐部');
         $this->needRender(true);
     }
     function new_club(){
         $this->assign('clubTypes',json_decode(TYPE_OF_CLUB));
+        $this->assign('title','新建俱乐部');
         $this->needRender(true);
     }
     function star_clubs(){
         $this->assign('clubTypes',json_decode(TYPE_OF_CLUB));
+        $this->assign('title','明星俱乐部');
         $this->needRender(true);
     }
     function clubList(){
@@ -40,7 +43,19 @@ class ClubController extends Controller
             $data = $_POST;
             $data['managerid'] = $_SESSION['id'];
             $clubCollection->createClub($data);
+            @header("location:".PAGE_AFTERCLUB);
         }
 
+    }
+    function search_result(){
+        $key = $_POST['key'];
+        $clubCollection = new ClubCollection();
+        echo json_encode($clubCollection->searchClubs($key),JSON_UNESCAPED_UNICODE);
+    }
+    function delete($data){
+        $id = $data[0];
+        $clubCollection = new ClubCollection();
+        $clubCollection->deleteClub($id);
+        @header("location:".PAGE_AFTERCLUB);
     }
 }

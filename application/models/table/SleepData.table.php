@@ -17,7 +17,7 @@ class SleepData extends Table
         return $this->query($sql)[0];
     }
     function getLastSleep($uid){
-        $sql = sprintf("select * from sleepdata WHERE uid = '%s' AND length<> 0 ORDER BY date DESC LIMIT 0,1",$uid);
+        $sql = sprintf("select * from sleepdata WHERE uid = '%s' ORDER BY date DESC LIMIT 0,1",$uid);
         return $this->query($sql)[0];
     }
     function getSleepOfWeek($uid){

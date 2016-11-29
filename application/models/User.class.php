@@ -17,7 +17,17 @@ class User implements UserService
     function getUserData()
     {
         $userDataTb = new UserData();
-        return $userDataTb->findById($this->id);
+        $result = $userDataTb->findById($this->id);
+
+        $watchTb = new WatchData();
+        $watchData = $watchTb->find('uid',$this->id);
+        for($i=0;$i<count($watchData);$i++){
+            $watchId = $watchData[$i]['watchid'];
+            $watchData[$i]['watchname'] = $userDataTb->findById($watchId)['username'];
+            $watchData[$i]['watchportrait'] = $userDataTb->findById($watchId)['portrait'];
+        }
+        $result['watchData'] = $watchData;
+        return $result;
         // TODO: Implement getUserData() method.
     }
 
@@ -52,6 +62,16 @@ class User implements UserService
                     }else{
                         return LEVEL_USER;
                     }
+                    break;
+                case 'his_data':
+                    if($value == $this->id){
+                        return LEVEL_OWNER;
+                    }elseif ($this->isWatched($value)){
+                        return LEVEL_INSIDER;
+                    }else{
+                        return LEVEL_USER;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -81,6 +101,16 @@ class User implements UserService
         $userAndClub = $userInClubTb->find('clubid',$clubId);
         for($i = 0;$i<count($userAndClub);$i++){
             if($this->id == $userAndClub[$i]['uid']){
+                return true;
+            }
+        }
+        return false;
+    }
+    private function isWatched($uid){
+        $watchTb = new WatchData();
+        $friends = $watchTb->find('uid',$this->id);
+        foreach($friends as $value){
+            if($uid==$value['watchid']){
                 return true;
             }
         }
@@ -164,6 +194,33 @@ class User implements UserService
                 $result['title'] = $titleTb[$i+1];
             }
         }
+        $stepTb = array(10000,100000);
+        $stepWordTb = array(STEP_LESS,STEP_MIDDLE,STEP_MORE);
+        $result['stepword'] = $stepWordTb[0];
+        for($i = 0;$i<count($stepTb);$i++){
+            if ($result['totalsteps']>=$stepTb[$i]){
+                $result['stepword'] = $stepWordTb[$i+1];
+            }
+        }
+
+        $distanceTb = array(10000,100000);
+        $distanceWordTb = array(DISTANCE_LESS,DISTANCE_MIDDLE,DISTANCE_MORE);
+        $result['distanceword'] = $distanceWordTb[0];
+        for($i = 0;$i<count($distanceTb);$i++){
+            if ($result['totaldistance']>=$distanceTb[$i]){
+                $result['distanceword'] = $distanceWordTb[$i+1];
+            }
+        }
+
+        $calorieTb = array(10000,100000);
+        $calorieWordTb = array(CALORIE_LESS,CALORIE_MIDDLE,CALORIE_MORE);
+        $result['calorieword'] = $calorieWordTb[0];
+        for($i = 0;$i<count($calorieTb);$i++){
+            if ($result['calorie']>=$calorieTb[$i]){
+                $result['calorieword'] = $calorieWordTb[$i+1];
+            }
+        }
+
         return $result;
     }
 
@@ -176,7 +233,8 @@ class User implements UserService
         $ringDataTb = new RingData();
         $userDataTb = new UserData();
         $lastRecord = $ringDataTb->getLastDataOfUser($this->id);
-
+        $data['uid'] = $this->id;
+        $ringDataTb->insert($data);
 
         $newSportData = array();
         $originSportData = $sportDataTb->find('uid',$this->id)[0];
@@ -187,8 +245,8 @@ class User implements UserService
             case 'sleep':
                 if($lastRecord['mode']=='sleep'){
                     $lastSleep = $sleepDataTb->getLastDataOfUser($this->id);
-                    $newSleepTime = (strtotime($data['time'])-strtotime($lastRecord['time']))/60;
-                    $newLevel = ($lastSleep['level']*$lastSleep['length']+$data['level']*10*$newSleepTime)/($lastSleep['length']+$newSleepTime);
+                    $newSleepTime = floor((strtotime($data['time'])-strtotime($lastRecord['time']))/60);
+                    $newLevel = floor(($lastSleep['level']*$lastSleep['length']+$data['level']*10*$newSleepTime)/($lastSleep['length']+$newSleepTime));
                     $newLength = $newSleepTime+$lastSleep['length'];
                     $toUpdate = array();
                     $toUpdate['level'] = $newLevel;
@@ -214,17 +272,17 @@ class User implements UserService
                     $userData = $userDataTb->findById($this->id);
                     $lastSport = $sportTrackTb->getLastDataOfUser($this->id);
                     $lonA = $lastRecord['locationx'];
-                    $latA = $lastRecord['loactiony'];
+                    $latA = $lastRecord['locationy'];
                     $lonB = $data['locationx'];
                     $latB = $data['locationy'];
                     $C =  sin($latA)*sin($latB) + cos($latA)*cos($latB)*cos($lonA-$lonB);
                     $R = R_OF_EARTH;
-                    $distance = $R*acos($C)*pi()/180;
+                    $distance = round($R*acos($C)*pi()/180,2);
                     $newDistance = $lastSport['distance']+ $distance;
                     $newRunTime = (strtotime($data['time'])-strtotime($lastRecord['time']))/60;
                     $newLength = $lastSport['length']+ $newRunTime;
-                    $newRate = ($lastSport['heartrate']*$lastSport['length']+$data['heartrate']*$newRunTime)/($lastSport['length']+$newRunTime);
-                    $addCalorie = $userData['weight']*$distance/1000*1.036;
+                    $newRate = ($lastSport['heartrate']*$lastSport['length']+$data['rate']*$newRunTime)/($lastSport['length']+$newRunTime);
+                    $addCalorie = round($userData['weight']*$distance/1000*1.036,2);
                     $newCalorie = $lastSport['calorie']+$addCalorie;
                     $toUpdate = array();
                     $toUpdate['distance'] = $newDistance;
@@ -253,12 +311,12 @@ class User implements UserService
                 if($lastRecord['mode']=='fast'){
                     $userData = $userDataTb->findById($this->id);
                     $lastSport = $sportTrackTb->getLastDataOfUser($this->id);
-                    $distance = $userData['step_length']*0.01*$data['path'];
+                    $distance = round($userData['step_length']*0.01*$data['path'],2);
                     $newDistance = $lastSport['distance']+ $distance;
                     $newRunTime = (strtotime($data['time'])-strtotime($lastRecord['time']))/60;
                     $newLength = $lastSport['length']+ $newRunTime;
-                    $newRate = ($lastSport['heartrate']*$lastSport['length']+$data['heartrate']*$newRunTime)/($lastSport['length']+$newRunTime);
-                    $addCalorie = $userData['weight']*0.1875*$newRunTime;
+                    $newRate = floor(($lastSport['heartrate']*$lastSport['length']+$data['rate']*$newRunTime)/($lastSport['length']+$newRunTime));
+                    $addCalorie = round($userData['weight']*0.1875*$newRunTime,2);
                     $newCalorie = $lastSport['calorie']+$addCalorie;
                     $toUpdate = array();
                     $toUpdate['distance'] = $newDistance;
@@ -292,12 +350,12 @@ class User implements UserService
                     $latB = $data['locationy'];
                     $C =  sin($latA)*sin($latB) + cos($latA)*cos($latB)*cos($lonA-$lonB);
                     $R = R_OF_EARTH;
-                    $distance = $R*acos($C)*pi()/180;
+                    $distance = round($R*acos($C)*pi()/180,2);
                     $newDistance = $lastSport['distance']+ $distance;
                     $newRunTime = (strtotime($data['time'])-strtotime($lastRecord['time']))/60;
                     $newLength = $lastSport['length']+ $newRunTime;
-                    $newRate = ($lastSport['heartrate']*$lastSport['length']+$data['heartrate']*$newRunTime)/($lastSport['length']+$newRunTime);
-                    $addCalorie = $userData['weight']*1.05*$distance/1000;
+                    $newRate = floor(($lastSport['heartrate']*$lastSport['length']+$data['heartrate']*$newRunTime)/($lastSport['length']+$newRunTime));
+                    $addCalorie = round($userData['weight']*1.05*$distance/1000,2);
                     $newCalorie = $lastSport['calorie']+$addCalorie;
                     $toUpdate = array();
                     $toUpdate['distance'] = $newDistance;
@@ -376,5 +434,34 @@ class User implements UserService
         }
         return $result;
 
+    }
+
+    function watchHim($uid)
+    {
+        // TODO: Implement watchHim() method.
+        $newWatch = array();
+        $newWatch['uid'] = $this->id;
+        $newWatch['watchid'] = $uid;
+
+        $watchTb = new WatchData();
+        $watchTb->insert($newWatch);
+
+        $messageTb = new MessageData();
+        $message = array();
+        $message['senderid'] = 0;
+        $message['receiverid'] = $uid;
+        $message['title'] = '关注提醒';
+        $message['contex'] = '一位用户关注了您：<a href="'.PEOPLE_ROOT.$this->id.'">点击查看</a>。';
+        $message['time'] = date(FORMAT_TIME);
+        $messageTb->insert($message);
+    }
+
+    function unWatch($uid)
+    {
+        // TODO: Implement unWatch() method.
+        $condition = array('uid'=>$this->id,'watchid'=>$uid);
+        $watchTb = new WatchData();
+        $user = $watchTb->findInGroup($condition)[0];
+        $watchTb->deleteById($user['id']);
     }
 }

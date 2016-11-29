@@ -15,6 +15,7 @@ class Table
     {
         $this->tableName = $tableName;
         $this->db = new SQLite3(DB_ROOT);
+        $this->db->exec("PRAGMA foreign_keys = ON;");
     }
 
     function query($sql)

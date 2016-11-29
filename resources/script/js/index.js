@@ -16,3 +16,17 @@ $('.sign > a').on('click',function () {
     }
 
 });
+$().ready(function() {
+    $("#signin").validate({
+        submitHandler: function(form)
+        {
+            $(form).ajaxSubmit();
+        }
+    });
+    $("#signup").validate({
+        submitHandler: function(form)
+        {
+            $(form).ajaxSubmit();
+        }
+    });
+});

@@ -16,7 +16,7 @@
         var address = '<?=$raceData['city']?><?=$raceData['location']?>';
     </script>
     <div class="row pageInner">
-        <h2><?= $raceData['name'] ?><span class="tag-sm"><?= $raceData['type'] ?></span></h2>
+        <h2><?= $raceData['name'] ?><span class="tag-sm"><?= $raceData['type'] ?></span><?=$anoGenerator->generateDeleteZone()?></h2>
         <p class="withIcon"><span
                 class="icon icon-location"></span><?= $raceData['province'] ?> <?= $raceData['city'] ?> <?= $raceData['location'] ?>
         </p>
@@ -34,11 +34,11 @@
 
     </div>
     <div class="row pageInner">
-        <p>参与者：<a href="/people/his_data/<?= $raceData['createrid'] ?>"><?= $raceData['creatername'] ?></a>(发起人)
+        <p>参与者：<a href="/people/his_data/<?= $raceData['createrid'] ?>"><img class="portrait" src="<?=$raceData['createrportrait']?>"><?= $raceData['creatername'] ?></a>(发起人)
             <?php
             foreach ($raceData['joiners'] as $value) {
                 ?>
-                <a href="/people/his_data/<?= $value['uid'] ?>"><?= $value['username'] ?></a>
+                <a href="/people/his_data/<?= $value['uid'] ?>"><img class="portrait" src="<?=$value['portrait']?>"><?= $value['username'] ?></a>
                 <?php
             }
             ?></p>

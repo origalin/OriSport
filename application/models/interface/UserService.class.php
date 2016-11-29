@@ -18,9 +18,13 @@ interface UserService
 
     function updateUserData($data);
 
-    function getAccessPrivilege($controller,$action,$value);
+    function getAccessPrivilege($controller, $action, $value);
 
     function upLoadRingData($data);
 
     function getHealthData();
+
+    function watchHim($uid);
+
+    function unWatch($uid);
 }

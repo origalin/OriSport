@@ -13,4 +13,6 @@ interface UserCollectionService
     function registration($username, $password,$height,$weight,$step_length,$time);
 
     function searchUsers($key);
+
+    function deleteUser($uid);
 }

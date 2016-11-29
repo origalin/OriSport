@@ -5,35 +5,35 @@
     <div class="row pageInner">
         <div class="col-md-12">
 
-            <form class="form-horizontal" action="/race/raceList" method="post">
+            <form class="form-horizontal" action="/race/raceList" method="post" id="newRace">
                 <div class="form-group row">
-                    <label for="name" class="col-sm-2 control-label">竞赛名称</label>
+                    <label for="name" class="col-sm-2 control-label" required>竞赛名称</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="name" name="name"
-                               value="">
+                               value="" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 control-label">竞赛城市</label>
                     <div class="col-md-4 select">
                         <select class="province cxselect form-control"
-                                data-first-title="选择省" title="province" name="province" id="province"></select>
+                                data-first-title="选择省" title="province" name="province" id="province" required></select>
                         <select class="city cxselect form-control"
-                                data-first-title="选择市" title="city" name="city" id="city"></select>
+                                data-first-title="选择市" title="city" name="city" id="city" required></select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="location" class="col-sm-2 control-label">地址</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="location" name="location"
-                               value="">
+                               value="" required/>
                     </div>
                 </div>
-               <div class="form-group">
+                <div class="form-group">
                     <label for="starttime" class="col-sm-2 control-label">开始时间</label>
                     <div class="col-sm-4">
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" id="starttime" name="starttime"/> <span
+                            <input type='text' class="form-control" id="starttime" name="starttime" required/> <span
                                 class="input-group-addon"> <span
                                     class="glyphicon glyphicon-calendar"></span>
 						</span>
@@ -43,12 +43,12 @@
                 <div class="form-group row">
                     <label for="type" class="col-sm-2 control-label">竞赛类型</label>
                     <div class="col-sm-4">
-                        <select class="form-control" id="type" name="type">
+                        <select class="form-control" id="type" name="type" required>
                             <option value="1" style="color: #b6b6b6" disabled selected>-选择类型-</option>
                             <?php
-                            foreach($raceTypes as $value){
+                            foreach ($raceTypes as $value) {
                                 ?>
-                                <option><?=$value?></option>
+                                <option><?= $value ?></option>
                                 <?php
                             }
                             ?>
@@ -58,14 +58,13 @@
                 <div class="form-group row">
                     <label for="reward" class="col-sm-2 control-label">奖励</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="reward" name="reward"
-                               value="">
+                        <input class="form-control {required:true,number:true}" id="reward" name="reward" type="number" min="0" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="description" class="col-sm-2 control-label">补充说明</label>
                     <div class="col-sm-4">
-                        <textarea class="form-control" id="description" name="description"></textarea>
+                        <textarea class="form-control" id="description" name="description" required></textarea>
                     </div>
                 </div>
                 <div class="form-group row">

@@ -13,4 +13,7 @@ interface RaceCollectionService
     function getUserRace($uid);
     function getRaceNum($uid);
     function getRaceReward($uid);
+    function searchRaces($key);
+    function updateRace($data);
+    function deleteRace($id);
 }

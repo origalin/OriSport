@@ -8,11 +8,15 @@
 define('DB_ROOT', 'resources/OriSport.db');
 define('PORTRAIT_ROOT','runtime/files/');
 define('RACE_ROOT','/race/race_detail/');
+define('PEOPLE_ROOT','/people/his_data/');
 define('CLUB_ROOT','/in_club/clubs/');
 define('PAGE_NOTLOGIN', '/errors/nologin');
 define('PAGE_LOGINFAIL','/errors/login_fail');
+define('PAGE_MANAGER','/manage/user_manage');
 define('PAGE_DEFAULE','/personal/sport_data');
+define('PAGE_LOGIN','/');
 define('PAGE_AFTERRACE','/race/my_races');
+define('PAGE_AFTERCLUB','/club/my_clubs');
 
 define('RACE_MINE','i_create');
 define('RACE_JOIN','i_join');

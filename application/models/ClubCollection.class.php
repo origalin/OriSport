@@ -21,6 +21,7 @@ class ClubCollection implements ClubCollectionService
     {
         // TODO: Implement createClub() method.
         $clubTb = new ClubData();
+        $data['createdate'] = date(FORMAT_DATE);
         $clubTb->insert($data);
     }
     function getUserJoinedClub($uid){
@@ -69,5 +70,20 @@ class ClubCollection implements ClubCollectionService
         }
         return $result;
 
+    }
+
+    function searchClubs($key)
+    {
+        // TODO: Implement searchClubs() method.
+        $clubTb = new ClubData();
+        $result=$clubTb->search('name',$key);
+        return $result;
+    }
+
+    function deleteClub($id)
+    {
+        // TODO: Implement deleteClub() method.
+        $clubTb = new ClubData();
+        $clubTb->deleteById($id);
     }
 }

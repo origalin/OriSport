@@ -8,7 +8,7 @@
 ?>
 <div class="col-md-2 inPage-sm">
     <div class="row pageInner-sm">
-        <?=$generator->generateJoinZone()?>
+        <?= $generator->generateJoinZone() ?>
     </div>
     <div class="pageInner">
         <p>成员</p>
@@ -19,7 +19,7 @@
             foreach ($members as $value) {
                 ?>
                 <div class="member">
-                    <a href="/people/his_data/<?= $value['id'] ?>"><?= $value['username'] ?></a>
+                    <img class="portrait" src="<?=$value['portrait']?>"><a href="/people/his_data/<?= $value['id'] ?>"><?= $value['username'] ?></a>
                 </div>
                 <?php
             }
@@ -32,7 +32,8 @@
         <h2><?= $clubData['name'] ?><span class="tag-sm"><?= $clubData['type'] ?></span></h2>
         <p class="withIcon"><span
                 class="icon icon-location"></span><?= $clubData['province'] ?> <?= $clubData['city'] ?></p>
-        <p>主席：<a href="/people/his_data/<?= $clubData['managerid'] ?>"><?= $clubData['managername'] ?></a></p>
+        <p>创建时间：<?= $clubData['createdate'] ?></p>
+        <p>主席：<a href="/people/his_data/<?= $clubData['managerid'] ?>"><img class="portrait" src="<?=$clubData['managerportrait']?>"><?= $clubData['managername'] ?></a></p>
         <p><?= $clubData['description'] ?></p>
     </div>
     <div class="row pageInner">
@@ -59,26 +60,30 @@
             ?>
 
         </div>
-        <?=$generator->generateChatZone()?>
+        <?= $generator->generateChatZone() ?>
     </div>
 </div>
 <div class="col-md-2 inPage-sm">
-    <?=$generator->generatePubZone()?>
+    <?= $generator->generatePubZone() ?>
     <?php
     if (count($pub) == 0) {
         echo "<div class='pageInner-sm'>暂无</div>";
     } else {
         foreach ($pub as $value) {
             ?>
-            <div class="pageInner-sm" onclick="$('#publicModal').modal('toggle')">
-                <div class="row">
-                    <?=$value['title']?>
+            <div class="pageInner-sm" onclick="showModal(this)">
+                <div class="row title">
+                    <h5>
+                        <?= $value['title'] ?>
+                    </h5>
                 </div>
                 <div class="row text">
-                    <?=$value['contex']?>
+                    <?= $value['contex'] ?>
                 </div>
                 <div class="row">
-                    <?=$value['time']?>
+                    <p class="pubTime">
+                        <?= $value['time'] ?>
+                    </p>
                 </div>
             </div>
             <?php
@@ -119,11 +124,10 @@
                 <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">x
                 </button>
-                <h2 class="text-left text-primary">公告XXXX</h2>
+                <h2 class="text-left text-primary title"></h2>
             </div>
             <div class="modal-body">
-                djklhflkjadghjgkdghlfkjhldkjahgdlkjafhsajkfhakljgasdfkljvadhfsjhkfjsa
-                asdadsdfdfsjagdjskjagdasfshfgakhgshf
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal" id="">关闭</button>

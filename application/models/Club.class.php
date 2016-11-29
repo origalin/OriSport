@@ -19,8 +19,10 @@ class Club implements ClubService
         // TODO: Implement getDetail() method.
         $clubTb = new ClubData();
         $accountTb = new Account();
+        $userTb = new UserData();
         $result = $clubTb->findById($this->id);
         $result['managername'] = $accountTb->findById($result['managerid'])['username'];
+        $result['managerportrait'] = $userTb->findById($result['managerid'])['portrait'];
         return $result;
     }
 
@@ -50,6 +52,12 @@ class Club implements ClubService
         $data['time'] = date(FORMAT_TIME);
         $chatOfClub = new MessageOfClub();
         $chatOfClub->insert($data);
+        $activityTb = new ActivityOfClub();
+        $newAct = array();
+        $newAct['time'] = date(FORMAT_TIME);
+        $newAct['clubid'] = $this->id;
+        $newAct['type'] = 'MESSAGE';
+        $activityTb->insert($newAct);
     }
 
     function addPub($data)
@@ -59,6 +67,12 @@ class Club implements ClubService
         $data['time'] = date(FORMAT_TIME);
         $pubOfClub = new PublicOfClub();
         $pubOfClub->insert($data);
+        $activityTb = new ActivityOfClub();
+        $newAct = array();
+        $newAct['time'] = date(FORMAT_TIME);
+        $newAct['clubid'] = $this->id;
+        $newAct['type'] = 'PUB';
+        $activityTb->insert($newAct);
     }
 
     function join($uid)
@@ -71,6 +85,12 @@ class Club implements ClubService
         $oldNum = $clubTb->findById($this->id)['membernum'];
         $numData = array('membernum'=>++$oldNum);
         $clubTb->update($this->id,$numData);
+        $activityTb = new ActivityOfClub();
+        $newAct = array();
+        $newAct['time'] = date(FORMAT_TIME);
+        $newAct['clubid'] = $this->id;
+        $newAct['type'] = 'JOIN';
+        $activityTb->insert($newAct);
     }
 
     function leave($uid)
@@ -83,6 +103,13 @@ class Club implements ClubService
         $oldNum = $clubTb->findById($this->id)['membernum'];
         $numData = array('membernum'=>--$oldNum);
         $clubTb->update($this->id,$numData);
+        $activityTb = new ActivityOfClub();
+        $newAct = array();
+        $newAct['time'] = date(FORMAT_TIME);
+        $newAct['clubid'] = $this->id;
+        $newAct['type'] = 'LEAVE';
+        $activityTb->insert($newAct);
+
     }
 
     function getMember()
@@ -90,12 +117,14 @@ class Club implements ClubService
         // TODO: Implement getMember() method.
         $userInClubTb = new UserInClub();
         $accountTb = new Account();
+        $userTb = new UserData();
         $result = array();
         $relations = $userInClubTb->find('clubid',$this->id);
         foreach ($relations as $value){
             $item = array();
             $item['id'] = $value['uid'];
             $item['username'] = $accountTb->findById($value['uid'])['username'];
+            $item['portrait'] = $userTb->findById($value['uid'])['portrait'];
             $result[]=$item;
         }
         return $result;

@@ -11,11 +11,13 @@ class UserController extends Controller
     function user_message(){
         $messageCollection = new MessageCollection();
         $this->assign('messages',$messageCollection->getMessages($_SESSION['id']));
+        $this->assign('title','我的信息');
         $this->needRender(true);
     }
     function user_data(){
         $user = new User($_SESSION['id']);
         $this->assign('userData',$user->getUserData());
+        $this->assign('title','我的资料');
         $this->needRender(true);
     }
     function search_result(){
@@ -66,4 +68,8 @@ class UserController extends Controller
                 break;
         }
     }
+    function ringdata(){
+    $user = new User($_SESSION['id']);
+    $user->upLoadRingData($_POST);
+}
 }

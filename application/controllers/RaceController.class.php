@@ -18,15 +18,18 @@ class RaceController extends Controller
         $this->assign('totalReward',$myReward);
         $this->assign('joinNum',$myRacesNum[RACE_JOIN]);
         $this->assign('mineNum',$myRacesNum[RACE_MINE]);
+        $this->assign('title','我的比赛');
         $this->needRender(true);
     }
     function new_race(){
         $this->assign('raceTypes',json_decode(TYPE_OF_RACE));
+        $this->assign('title','新建比赛');
         $this->needRender(true);
     }
     function race_detail($data){
         if($_SERVER['REQUEST_METHOD']=='GET'){
             $raceId = $data[0];
+            $this->assign('id',$raceId);
             $race = new Race($raceId);
             $user = new User($_SESSION['id']);
             $raceData = $race->getDetail();
@@ -34,6 +37,7 @@ class RaceController extends Controller
 
             $level = $user->getAccessPrivilege($this->_controller,$this->_action,$raceId);
             $generator = new RaceNotStartGenerator($level);
+            $anoGenerator = new RaceGenerator($level,$raceId);
             switch ($raceData['state']){
                 case RACE_NOTSTART:
                     $generator = new RaceNotStartGenerator($level);
@@ -48,6 +52,8 @@ class RaceController extends Controller
                     break;
             }
             $this->assign('generator',$generator);
+            $this->assign('anoGenerator',$anoGenerator);
+            $this->assign('title',$race->getDetail()['name']);
             $this->needRender(true);
 
         }elseif ($_SERVER['REQUEST_METHOD']=='POST'){
@@ -78,6 +84,7 @@ class RaceController extends Controller
         $defaultCondition = array();
         $this->assign('raceList',$raceCollection->getRaceList($defaultCondition));
         $this->assign('raceTypes',json_decode(TYPE_OF_RACE));
+        $this->assign('title','竞技场');
         $this->needRender(true);
     }
     function raceList(){
@@ -95,10 +102,28 @@ class RaceController extends Controller
             echo json_encode($result,JSON_UNESCAPED_UNICODE);
         }elseif ($_SERVER['REQUEST_METHOD']=='POST'){
             $data = $_POST;
-            $data['createrid'] = $_SESSION['id'];
-            $raceCollection->createRace($data);
+            if(!isset($data['id'])){
+                $data['createrid'] = $_SESSION['id'];
+                $raceCollection->createRace($data);
+            }else{
+                $raceCollection->updateRace($data);
+            }
             @header("location:".PAGE_AFTERRACE);
         }
 
+    }
+    function delete($data){
+        $id = $data[0];
+        $raceCollection = new RaceCollection();
+        $raceCollection->deleteRace($id);
+        if($_SESSION['role'] != 'manager'){
+            @header("location:".PAGE_AFTERRACE);
+        }
+    }
+    function search_result(){
+        $key = $_POST['key'];
+        $raceCollectionTb = new RaceCollection();
+        $result = $raceCollectionTb->searchRaces($key);
+        echo json_encode($result,JSON_UNESCAPED_UNICODE);
     }
 }

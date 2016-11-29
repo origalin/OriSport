@@ -10,6 +10,7 @@
     <div class="row pageInner">
         <span class="health disp-lg"></span>
         <p>您目前的健康指数为<br><span class="bNums"><?=$healthData['point']?></span></p>
+        <p class="tips">*健康指数受睡眠质量、运动质量、体脂率多因素影响</p>
     </div>
     <div class="row pageInner">
         <div class="col-md-4">
