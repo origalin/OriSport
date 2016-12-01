@@ -17,7 +17,7 @@ class RaceEndedGenerator  extends ViewGenerator implements RaceGeneratorService
     {
         // TODO: Implement genarateWinZone() method.
         $resultTb = array();
-        $resultTb[LEVEL_USER] = '<h3>比赛已结束，冠军为</h3><h4 style="text-align: center" id="winner"><a></a></h4>';
+        $resultTb[LEVEL_USER] = '<h3>比赛已结束，冠军为</h3><p style="text-align: center"><img id="winnerPortrait" class="portrait-lg"></p><h4 style="text-align: center" id="winner"><a></a></h4>';
         return $this->getResult($resultTb);
     }
 
@@ -27,5 +27,10 @@ class RaceEndedGenerator  extends ViewGenerator implements RaceGeneratorService
         $resultTb = array();
         $resultTb[LEVEL_USER] = '';
         return $this->getResult($resultTb);
+    }
+
+    function generateEditZone()
+    {
+        // TODO: Implement generateEditZone() method.
     }
 }

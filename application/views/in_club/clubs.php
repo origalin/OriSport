@@ -19,7 +19,8 @@
             foreach ($members as $value) {
                 ?>
                 <div class="member">
-                    <img class="portrait" src="<?=$value['portrait']?>"><a href="/people/his_data/<?= $value['id'] ?>"><?= $value['username'] ?></a>
+                    <img class="portrait" src="<?= $value['portrait'] ?>"><a
+                        href="/people/his_data/<?= $value['id'] ?>"><?= $value['username'] ?></a>
                 </div>
                 <?php
             }
@@ -33,7 +34,9 @@
         <p class="withIcon"><span
                 class="icon icon-location"></span><?= $clubData['province'] ?> <?= $clubData['city'] ?></p>
         <p>创建时间：<?= $clubData['createdate'] ?></p>
-        <p>主席：<a href="/people/his_data/<?= $clubData['managerid'] ?>"><img class="portrait" src="<?=$clubData['managerportrait']?>"><?= $clubData['managername'] ?></a></p>
+        <p>主席：<a href="/people/his_data/<?= $clubData['managerid'] ?>"><img class="portrait"
+                                                                            src="<?= $clubData['managerportrait'] ?>"><?= $clubData['managername'] ?>
+            </a></p>
         <p><?= $clubData['description'] ?></p>
     </div>
     <div class="row pageInner">
@@ -47,7 +50,8 @@
                     ?>
                     <div class="row messageItem">
                         <div class="col-md-12">
-                            <p><a href="/people/his_data/<?= $value['createrid'] ?>"><?= $value['creatername'] ?>:</a>
+                            <p><img class="portrait" src="<?= $value['createrportrait'] ?>"><a
+                                    href="/people/his_data/<?= $value['createrid'] ?>"><?= $value['creatername'] ?>:</a>
                             </p>
                             <p><?= $value['contex'] ?></p>
                             <p class="withIcon pull-right"><span class="icon icon-time"></span><?= $value['time'] ?>
@@ -64,6 +68,9 @@
     </div>
 </div>
 <div class="col-md-2 inPage-sm">
+    <div class="pageInner-sm">
+        <h4>俱乐部公告</h4>
+    </div>
     <?= $generator->generatePubZone() ?>
     <?php
     if (count($pub) == 0) {
@@ -74,7 +81,9 @@
             <div class="pageInner-sm" onclick="showModal(this)">
                 <div class="row title">
                     <h5>
-                        <?= $value['title'] ?>
+                        <b>
+                            <?= $value['title'] ?>
+                        </b>
                     </h5>
                 </div>
                 <div class="row text">

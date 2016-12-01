@@ -29,4 +29,9 @@ class RaceRunningGenerator extends ViewGenerator implements RaceGeneratorService
         $resultTb[LEVEL_INSIDER] = '<h3>比赛已经开始</h3>';
         return $this->getResult($resultTb);
     }
+
+    function generateEditZone()
+    {
+        // TODO: Implement generateEditZone() method.
+    }
 }

@@ -12,17 +12,22 @@
         <button onclick="history.go(-1);" class="btn btn-success">返回</button>
     </div>
     <script>
+        var raceId = <?=$id?>;
         var city = '<?=$raceData['city']?>';
         var address = '<?=$raceData['city']?><?=$raceData['location']?>';
     </script>
     <div class="row pageInner">
-        <h2><?= $raceData['name'] ?><span class="tag-sm"><?= $raceData['type'] ?></span><?=$anoGenerator->generateDeleteZone()?></h2>
+        <h2 class="withIcon-md"><span class="icon-md <?=$raceData['state']?>"></span><?= $raceData['name'] ?><span
+                class="tag-sm"><?= $raceData['type'] ?></span><?= $generator->generateEditZone() ?><?= $anoGenerator->generateDeleteZone() ?>
+        </h2>
         <p class="withIcon"><span
                 class="icon icon-location"></span><?= $raceData['province'] ?> <?= $raceData['city'] ?> <?= $raceData['location'] ?>
         </p>
         <div class="row">
-            <div class="col-md-4">
-                <div class="map" id="map"></div>
+            <div class="col-md-5">
+                <div class="mapWrapper">
+                    <div class="map" id="map"></div>
+                </div>
             </div>
             <div class="col-md-6">
                 <p><?= $raceData['description'] ?></p>
@@ -34,11 +39,15 @@
 
     </div>
     <div class="row pageInner">
-        <p>参与者：<a href="/people/his_data/<?= $raceData['createrid'] ?>"><img class="portrait" src="<?=$raceData['createrportrait']?>"><?= $raceData['creatername'] ?></a>(发起人)
+        <p>参与者：<a href="/people/his_data/<?= $raceData['createrid'] ?>"><img class="portrait"
+                                                                             src="<?= $raceData['createrportrait'] ?>"><?= $raceData['creatername'] ?>
+            </a>(发起人)
             <?php
             foreach ($raceData['joiners'] as $value) {
                 ?>
-                <a href="/people/his_data/<?= $value['uid'] ?>"><img class="portrait" src="<?=$value['portrait']?>"><?= $value['username'] ?></a>
+                <a href="/people/his_data/<?= $value['uid'] ?>"><img class="portrait"
+                                                                     src="<?= $value['portrait'] ?>"><?= $value['username'] ?>
+                </a>
                 <?php
             }
             ?></p>
@@ -62,7 +71,8 @@
         ];
         var winner = {
             id: '<?=$raceData['winner']?>',
-            name:'<?=$raceData['winnername']?>'
+            name: '<?=$raceData['winnername']?>',
+            portrait: '<?=$raceData['winnerportrait']?>'
         };
     </script>
 </div>

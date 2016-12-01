@@ -72,8 +72,16 @@ class RaceCollection implements RaceCollectionService
     {
         // TODO: Implement updateRace() method.
         $id = $data['id'];
+        unset($data['id']);
         $raceTb = new RaceData();
-        $raceTb->update($id,$data);
+        $userTb = new UserData();
+        $newPoint = $userTb->findById($data['createrid'])['point']-$data['reward']+$raceTb->findById($id)['reward'];
+        if($newPoint<0){
+            echo 'lack_of_point';
+        }else{
+            $userTb->update($data['createrid'],array('point'=>$newPoint));
+            $raceTb->update($id,$data);
+        }
     }
 
     function deleteRace($id)

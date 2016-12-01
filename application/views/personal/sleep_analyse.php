@@ -44,7 +44,7 @@
                 }
                 ?>
             </script>
-            <div class="col-md-8 col-md-offset-2 sleepGraph" id="sleepGraph">
+            <div class="col-md-10 col-md-offset-1 sleepGraph" id="sleepGraph">
                 我是图表
             </div>
         </div>

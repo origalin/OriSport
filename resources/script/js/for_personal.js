@@ -15,13 +15,16 @@ $(function () {
       }
       var option = {
           title: {
-              text: '睡眠趋势记录'
+              text: '睡眠历史记录'
           },
           tooltip: {
               trigger: 'axis',
               axisPointer: {
                   animation: false
               }
+          },
+          legend: {
+              data: ['睡眠总时间', '深度睡眠时间', '不安定值']
           },
           xAxis: {
               type: 'category',
@@ -31,6 +34,7 @@ $(function () {
               data:date
           },
           yAxis: [{
+              name:'时间/min',
               type: 'value',
               splitLine: {
                   show: false
@@ -46,7 +50,14 @@ $(function () {
               type: 'line',
               showSymbol: false,
               hoverAnimation: false,
-              data: lengthData
+              data: lengthData,
+              markLine: {
+                  symbol: 'circle',
+                  data:[{
+                      name: '推荐睡眠时间',
+                      yAxis: 450
+                  }]
+              }
           },{
               name: '深度睡眠时间',
               type: 'line',
@@ -54,7 +65,7 @@ $(function () {
               hoverAnimation: false,
               data: deepData
           },{
-              name: '安定度',
+              name: '不安定值',
               type: 'line',
               yAxisIndex:1,
               showSymbol: false,

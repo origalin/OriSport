@@ -40,7 +40,7 @@ function addChat() {
     var id = urls[urls.length-1];
     var data = {
         contex:$('#textPanel').val()
-    }
+    };
     $.ajax({
         url: '/in_club/chats/'+id,
         type: 'post',
@@ -59,7 +59,7 @@ function addPub() {
     var data = {
         contex:$('#publicPanel').val(),
         title:$('#publicTitle').val()
-    }
+    };
     $.ajax({
         url: '/in_club/pubs/'+id,
         type: 'post',

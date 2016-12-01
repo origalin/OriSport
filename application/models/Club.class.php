@@ -31,9 +31,11 @@ class Club implements ClubService
         // TODO: Implement getChat() method.
         $chatOfClub = new MessageOfClub();
         $accountTb = new Account();
+        $userTb = new UserData();
         $result = $chatOfClub->find('clubid',$this->id);
         for($i = 0;$i<count($result);$i++){
             $result[$i]['creatername'] = $accountTb->findById($result[$i]['createrid'])['username'];
+            $result[$i]['createrportrait'] = $userTb->findById($result[$i]['createrid'])['portrait'];
         }
         return $result;
     }

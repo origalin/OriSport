@@ -52,7 +52,7 @@ function updateRaceField(raceList) {
             '<div class="col-md-12">' +
             '<div class="row">' +
             '<div class="col-md-8">' +
-            '<h3><a href="/race/race_detail/' + raceList[i]["id"] + '">' + raceList[i]["name"] + '</a><span class="tag-sm">' + raceList[i]["type"] + '</span></h3>' +
+            '<h3 class="withIcon-md"><span class="icon-md '+raceList[i]["state"]+'"></span><a href="/race/race_detail/' + raceList[i]["id"] + '">' + raceList[i]["name"] + '</a><span class="tag-sm">' + raceList[i]["type"] + '</span></h3>' +
             '</div>' +
             '</div>' +
             '<div class="row">' +
@@ -114,6 +114,9 @@ function endRace(item) {
             alert('出错了，更改无法保存')
         }
     });
+}
+function editRace() {
+    location.href = '/race/modification/'+raceId;
 }
 function showMap() {
     if($('#map').css('display')=='none'){
@@ -187,5 +190,6 @@ $(function () {
     if($('#winner').length>0){
         $('#winner').find('a').attr('href','/people/his_data/'+winner.id);
         $('#winner').find('a').text(winner.name);
+        $('#winnerPortrait').attr('src',winner.portrait);
     }
 });

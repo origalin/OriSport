@@ -10,4 +10,5 @@ interface RaceGeneratorService
 {
     function generateWinZone();
     function generateJoinZone();
+    function generateEditZone();
 }

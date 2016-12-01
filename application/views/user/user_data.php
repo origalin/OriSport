@@ -16,7 +16,8 @@
             </div>
         </div>
         <h2><?= $userData['username'] ?></h2>
-        <p>积分：<?= $userData['point'] ?></p>
+        <h3>积分：<?= $userData['point'] ?></h3>
+        <h3>评级：<?= $his_title ?></h3>
     </div>
     <div id="bodyData" class="row pageInner">
         <div class="editTool editTool-sp">
@@ -73,7 +74,7 @@
         <div style="display: flex">
             <span>个人签名：<span class="mayHide"
                              id="description_h"><?= $userData['description'] == '' ? '-' : $userData['description'] ?></span></span><textarea
-                class="form-control input-sm mayChange" id="description"></textarea>
+                class="form-control mayChange" id="description"></textarea>
         </div>
     </div>
     <div class="row pageInner">
@@ -97,7 +98,7 @@
                 <form class="avatar-form" action="/user/portrait" enctype="multipart/form-data" method="post">
                     <div class="modal-header">
                         <button class="close" data-dismiss="modal" type="button">×</button>
-                        <h4 class="modal-title" id="avatar-modal-label">Change Logo Picture</h4>
+                        <h4 class="modal-title" id="avatar-modal-label">上传用户头像</h4>
                     </div>
                     <div class="modal-body">
                         <div class="avatar-body">

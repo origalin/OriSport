@@ -31,8 +31,10 @@ class Race implements RaceService
         $raceData['createrportrait'] = $userTb->findById($raceData['createrid'])['portrait'];
         if($raceData['winner']!=NULL){
             $raceData['winnername'] = $accountTb->findById($raceData['winner'])['username'];
+            $raceData['winnerportrait'] = $userTb->findById($raceData['winner'])['portrait'];
         }else{
             $raceData['winnername']=NULL;
+            $raceData['winnerportrait'] = NULL;
         }
         return $raceData;
     }
@@ -46,6 +48,15 @@ class Race implements RaceService
         $userTb = new UserData();
         $newPoint = $userTb->findById($winnerId)['point']+$this->getDetail()['reward'];
         $userTb->update($winnerId,array('point'=>$newPoint));
+
+        $messageTb = new MessageData();
+        $message = array();
+        $message['senderid'] = 0;
+        $message['receiverid'] = $winnerId;
+        $message['title'] = '竞赛结束';
+        $message['contex'] = '你赢得了一场比赛：<a href="'.RACE_ROOT.$this->id.'">点击查看</a>，快来看看吧！';
+        $message['time'] = date(FORMAT_TIME);
+        $messageTb->insert($message);
     }
 
     function join($uid)

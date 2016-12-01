@@ -17,6 +17,8 @@ class UserController extends Controller
     function user_data(){
         $user = new User($_SESSION['id']);
         $this->assign('userData',$user->getUserData());
+        $his_title = $user->getSportData()['title'];
+        $this->assign('his_title',$his_title);
         $this->assign('title','我的资料');
         $this->needRender(true);
     }
@@ -48,7 +50,10 @@ class UserController extends Controller
         $thumb->save($path);
         $user = new User($_SESSION['id']);
         $originPortrait = appRoot.$user->getUserData()['portrait'];
-        unlink($originPortrait);
+        if($user->getUserData()['portrait']!='/runtime/files/user.png'){
+            unlink($originPortrait);
+        }
+        $_SESSION['portrait'] = '/'.$path;
         $data = array('portrait'=>'/'.$path);
         $user->updateUserData($data);
         echo '{"result":"http://'.$_SERVER['HTTP_HOST'].'/'.$path.'"}';

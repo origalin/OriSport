@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    Date.prototype.Format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+
+    var form = new FormData();
+    form.append("username", "origalin");
+    form.append("password", "123456");
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost/sign/account/verifying",
+        "method": "POST",
+        "headers": {
+            "cache-control": "no-cache",
+            "postman-token": "a6307241-3c68-fd76-0fc0-63cf16d7627a"
+        },
+        "processData": false,
+        "contentType": false,
+        "mimeType": "multipart/form-data",
+        "data": form
+    }
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+    var modeTb = ['sit','sit','slow','slow','fast','sit','slow','ride','sleep','sit','ride','sleep','sleep','sleep','sit','sit','traffic'];
+    var date = new Date('2015/12/12 12:12');
+    var datestr = date.Format('yyyy-MM-dd hh:mm');
+    var path = 0;
+    var locationx = 32.0597600000;
+    var locationy = 118.7884490000;
+    var mode = 'sit';
+    var rate = 70;
+    var level = 1;
+for(var i = 1000;i>0;i--){
+    var modeIndex = Math.floor(Math.random()*17);
+    //alert(modeTb[modeIndex]);
+    insert(modeTb[modeIndex]);
+}
+function timeNext(min) {
+    min+=Math.floor(Math.random()*20-10);
+    date.setMinutes(date.getMinutes()+min);
+    datestr = date.Format('yyyy-MM-dd hh:mm');
+}
+function locationNext() {
+    locationx+=Math.random()*0.01-0.005;
+    locationy+=Math.random()*0.01-0.005;
+}
+function randPath() {
+    path=200+Math.floor(Math.random()*70);
+}
+function lowRate() {
+    rate = 70+Math.floor(Math.random()*20-10);
+}
+function highRate() {
+    rate = 120+Math.floor(Math.random()*20-10);
+}
+function lowLevel() {
+    level = Math.round(Math.random());
+}
+function highLevel() {
+    level = 4+Math.round(Math.random()*4-2);
+}
+function insert(amode) {
+    switch (amode){
+        case 'sit':
+            mode = 'sit';
+            for(var i = 10;i >0;i--){
+                path=0;
+                timeNext(20);
+                lowRate();
+                lowLevel();
+                post();
+            }
+            break;
+        case 'slow':
+            mode = 'slow';
+            for (var i = 5;i>0;i--){
+                timeNext(20);
+                highRate();
+                locationNext();
+                randPath();
+                highLevel();
+                post();
+            }
+            break;
+        case 'fast':
+            mode = 'fast';
+            for(var i = 3;i>0;i--){
+                timeNext(20);
+                highRate();
+                locationNext();
+                randPath();
+                highLevel();
+                post();
+            }
+            break;
+        case 'ride':
+            mode = 'ride';
+            for(var i = 10;i>0;i--){
+                timeNext(20);
+                highRate();
+                locationNext();
+                path=0;
+                highLevel();
+                post();
+            }
+            break;
+        case 'sleep':
+            mode = 'sleep';
+            for(var i = 15;i>0;i--){
+                timeNext(30);
+                lowRate();
+                path=0;
+                lowLevel();
+                post();
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+function post() {
+    var form = {
+        time:datestr,
+        path:path,
+        locationx:locationx,
+        locationy:locationy,
+        mode:mode,
+        rate:rate,
+        level:level
+    };
+    var settings = {
+        "url": "http://localhost/user/ringdata",
+        "method": "POST",
+        "data": form
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+}
+</script>
+</html>

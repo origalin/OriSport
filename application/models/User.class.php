@@ -242,9 +242,10 @@ class User implements UserService
 
 
         switch ($data['mode']){
+
             case 'sleep':
-                if($lastRecord['mode']=='sleep'){
-                    $lastSleep = $sleepDataTb->getLastDataOfUser($this->id);
+                $lastSleep = $sleepDataTb->getLastDataOfUser($this->id);
+                if($lastRecord['mode']=='sleep'||$lastSleep['date']==date(FORMAT_DATE,strtotime($data['time']))){
                     $newSleepTime = floor((strtotime($data['time'])-strtotime($lastRecord['time']))/60);
                     $newLevel = floor(($lastSleep['level']*$lastSleep['length']+$data['level']*10*$newSleepTime)/($lastSleep['length']+$newSleepTime));
                     $newLength = $newSleepTime+$lastSleep['length'];
@@ -258,7 +259,7 @@ class User implements UserService
                 }else{
                     $toInsert = array();
                     $toInsert['uid'] = $this->id;
-                    $toInsert['date'] = date(FORMAT_DATE);
+                    $toInsert['date'] = date(FORMAT_DATE,strtotime($data['time']));
                     $toInsert['level'] = 0;
                     $toInsert['length'] = 0;
                     $toInsert['deeplength'] = 0;
@@ -281,7 +282,7 @@ class User implements UserService
                     $newDistance = $lastSport['distance']+ $distance;
                     $newRunTime = (strtotime($data['time'])-strtotime($lastRecord['time']))/60;
                     $newLength = $lastSport['length']+ $newRunTime;
-                    $newRate = ($lastSport['heartrate']*$lastSport['length']+$data['rate']*$newRunTime)/($lastSport['length']+$newRunTime);
+                    $newRate = floor(($lastSport['heartrate']*$lastSport['length']+$data['rate']*$newRunTime)/($lastSport['length']+$newRunTime));
                     $addCalorie = round($userData['weight']*$distance/1000*1.036,2);
                     $newCalorie = $lastSport['calorie']+$addCalorie;
                     $toUpdate = array();
@@ -297,7 +298,7 @@ class User implements UserService
                 }else{
                     $toInsert = array();
                     $toInsert['uid'] = $this->id;
-                    $toInsert['time'] =date(FORMAT_TIME);
+                    $toInsert['time'] =$data['time'];
                     $toInsert['length'] = 0;
                     $toInsert['distance'] = 0;
                     $toInsert['calorie'] = 0;
@@ -331,7 +332,7 @@ class User implements UserService
                 }else{
                     $toInsert = array();
                     $toInsert['uid'] = $this->id;
-                    $toInsert['time'] =date(FORMAT_TIME);
+                    $toInsert['time'] =$data['time'];
                     $toInsert['length'] = 0;
                     $toInsert['distance'] = 0;
                     $toInsert['calorie'] = 0;
@@ -345,7 +346,7 @@ class User implements UserService
                     $userData = $userDataTb->findById($this->id);
                     $lastSport = $sportTrackTb->getLastDataOfUser($this->id);
                     $lonA = $lastRecord['locationx'];
-                    $latA = $lastRecord['loactiony'];
+                    $latA = $lastRecord['locationy'];
                     $lonB = $data['locationx'];
                     $latB = $data['locationy'];
                     $C =  sin($latA)*sin($latB) + cos($latA)*cos($latB)*cos($lonA-$lonB);
@@ -354,7 +355,7 @@ class User implements UserService
                     $newDistance = $lastSport['distance']+ $distance;
                     $newRunTime = (strtotime($data['time'])-strtotime($lastRecord['time']))/60;
                     $newLength = $lastSport['length']+ $newRunTime;
-                    $newRate = floor(($lastSport['heartrate']*$lastSport['length']+$data['heartrate']*$newRunTime)/($lastSport['length']+$newRunTime));
+                    $newRate = floor(($lastSport['heartrate']*$lastSport['length']+$data['rate']*$newRunTime)/($lastSport['length']+$newRunTime));
                     $addCalorie = round($userData['weight']*1.05*$distance/1000,2);
                     $newCalorie = $lastSport['calorie']+$addCalorie;
                     $toUpdate = array();
@@ -369,12 +370,12 @@ class User implements UserService
                 }else{
                     $toInsert = array();
                     $toInsert['uid'] = $this->id;
-                    $toInsert['time'] =date(FORMAT_TIME);
+                    $toInsert['time'] =$data['time'];
                     $toInsert['length'] = 0;
                     $toInsert['distance'] = 0;
                     $toInsert['calorie'] = 0;
                     $toInsert['heartrate'] = 0;
-                    $toInsert['type'] = 'slow';
+                    $toInsert['type'] = 'ride';
                     $sportTrackTb->insert($toInsert);
                 }
                 break;

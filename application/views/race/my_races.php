@@ -38,7 +38,7 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <h3><a href="/race/race_detail/<?=$value['id']?>"><?=$value['name']?></a><span class="tag-sm"><?=$value['type']?></span></h3>
+                                    <h3 class="withIcon-md"><span class="icon-md <?=$value['state']?>"></span><a href="/race/race_detail/<?=$value['id']?>"><?=$value['name']?></a><span class="tag-sm"><?=$value['type']?></span></h3>
                                 </div>
                             </div>
                             <div class="row">
@@ -72,7 +72,7 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <h3><a href="/race/race_detail/<?=$value['id']?>"><?=$value['name']?></a><span class="tag-sm"><?=$value['type']?></span></h3>
+                                    <h3 class="withIcon-md"><span class="icon-md <?=$value['state']?>"></span><a href="/race/race_detail/<?=$value['id']?>"><?=$value['name']?></a><span class="tag-sm"><?=$value['type']?></span></h3>
                                 </div>
                             </div>
                             <div class="row">

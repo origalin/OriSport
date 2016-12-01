@@ -16,7 +16,8 @@
         </div>
         <h2><?= $userData['username'] ?></h2>
         <?=$generator->generateButton()?>
-        <p>积分：<?=$userData['point']?></p>
+        <h3>积分：<?=$userData['point']?></h3>
+        <h3>评级：<?= $his_title ?></h3>
     </div>
     <div id="bodyData" class="row pageInner">
         <div>

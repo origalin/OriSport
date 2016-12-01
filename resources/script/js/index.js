@@ -12,7 +12,6 @@ $('.sign > a').on('click',function () {
             $('.form-signup').fadeIn(200);
             $('.sign > a').text('已有帐号？sign in!');
         });
-
     }
 
 });

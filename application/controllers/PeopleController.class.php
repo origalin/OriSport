@@ -14,7 +14,8 @@ class PeopleController extends Controller
             $user = new User($uid);
             $me = new User($_SESSION['id']);
             $level = $me->getAccessPrivilege($this->_controller,$this->_action,$uid);
-
+            $his_title = $user->getSportData()['title'];
+            $this->assign('his_title',$his_title);
             $this->assign('generator',new PeopleGenerator($level));
             $this->assign('userData',$user->getUserData());
             $this->assign('title','他的资料');

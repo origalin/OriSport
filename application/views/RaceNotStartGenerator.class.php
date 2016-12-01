@@ -29,4 +29,12 @@ class RaceNotStartGenerator extends ViewGenerator implements RaceGeneratorServic
         $resultTb[LEVEL_OWNER] = '<p><button class="btn btn-success searchStarter">邀请参赛者</button></p>';
         return $this->getResult($resultTb);
     }
+    function generateEditZone()
+    {
+        // TODO: Implement genarateJoinZone() method.
+        $resultTb = array();
+        $resultTb[LEVEL_USER] = '';
+        $resultTb[LEVEL_OWNER] = '<button class="btn btn-sm btn-warning pull-right" onclick="editRace()" style="margin-left: 10px">编辑比赛</button>';
+        return $this->getResult($resultTb);
+    }
 }

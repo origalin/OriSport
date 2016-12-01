@@ -32,6 +32,9 @@ function search() {
             alert(2)
         }
     });
+    return function () {
+        return data;
+    }
 }
 function displaySearch(users) {
     var resultBd = $('#result');

@@ -71,8 +71,7 @@ class Table
     }
     public function update($id, $data)
     {
-        $sql = sprintf("update %s set %s where id = '%s'", $this->tableName, $this->formatUpdate($data), $id);
-
+        $sql = sprintf("update %s set %s where id = %d", $this->tableName, $this->formatUpdate($data), $id);
         $this->db->exec($sql);
     }
     private function formatInsert($data)

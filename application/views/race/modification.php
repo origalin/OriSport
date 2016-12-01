@@ -1,3 +1,11 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: lin11
+ * Date: 2016/11/30
+ * Time: 20:37
+ */
+?>
 <div class="col-md-10 inPage">
     <div class="row pageInner">
         <button onclick="window.location.href = document.referrer" class="btn btn-success">返回</button>
@@ -5,12 +13,13 @@
     <div class="row pageInner">
         <div class="col-md-12">
 
-            <form class="form-horizontal" action="/race/raceList" method="post" id="newRace">
+            <form class="form-horizontal" action="/race/raceList/<?=$raceData['id']?>" method="post" id="newRace">
+                <input name="id" id="id" value="<?=$raceData['id']?>" type="hidden">
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 control-label" required>竞赛名称</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="name" name="name"
-                               value="" required/>
+                               value="<?=$raceData['name']?>" required/>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -26,14 +35,14 @@
                     <label for="location" class="col-sm-2 control-label">地址</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="location" name="location"
-                               value="" required/>
+                               value="<?=$raceData['location']?>" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="starttime" class="col-sm-2 control-label">开始时间</label>
                     <div class="col-sm-6">
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" id="starttime" name="starttime" required/> <span
+                            <input type='text' class="form-control" id="starttime" name="starttime" value="<?=$raceData['starttime']?>" required/> <span
                                 class="input-group-addon"> <span
                                     class="glyphicon glyphicon-calendar"></span>
 						</span>
@@ -58,13 +67,13 @@
                 <div class="form-group row">
                     <label for="reward" class="col-sm-2 control-label">奖励</label>
                     <div class="col-sm-6">
-                        <input class="form-control {required:true,number:true}" id="reward" name="reward" type="number" min="0" />
+                        <input class="form-control {required:true,number:true}" id="reward" name="reward" type="number" min="0" value="<?=$raceData['reward']?>" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="description" class="col-sm-2 control-label">补充说明</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" id="description" name="description" required></textarea>
+                        <textarea class="form-control" id="description" name="description"  required><?=$raceData['description']?></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -74,6 +83,7 @@
         </div>
     </div>
 </div>
+
 
 
 

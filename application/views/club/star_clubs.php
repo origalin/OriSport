@@ -18,12 +18,17 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="" alt="...">
+                    <img src="/resources/img/club_1.png" alt="...">
                     <div class="carousel-caption">
                     </div>
                 </div>
                 <div class="item">
-                    <img src="" alt="...">
+                    <img src="/resources/img/club_2.png" alt="...">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="/resources/img/club_3.png" alt="...">
                     <div class="carousel-caption">
                     </div>
                 </div>

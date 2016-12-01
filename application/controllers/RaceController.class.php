@@ -79,6 +79,16 @@ class RaceController extends Controller
             }
         }
     }
+    function modification($data){
+        $raceId = $data[0];
+        $this->assign('id',$raceId);
+        $race = new Race($raceId);
+        $raceData = $race->getDetail();
+        $this->assign('raceData',$raceData);
+        $this->assign('raceTypes',json_decode(TYPE_OF_RACE));
+        $this->assign('title','编辑竞赛');
+        $this->needRender(true);
+    }
     function race_field(){
         $raceCollection = new RaceCollection();
         $defaultCondition = array();
@@ -105,10 +115,12 @@ class RaceController extends Controller
             if(!isset($data['id'])){
                 $data['createrid'] = $_SESSION['id'];
                 $raceCollection->createRace($data);
+                @header("location:".PAGE_AFTERRACE);
             }else{
                 $raceCollection->updateRace($data);
+                @header("location:".RACE_ROOT.$data['id']);
             }
-            @header("location:".PAGE_AFTERRACE);
+
         }
 
     }

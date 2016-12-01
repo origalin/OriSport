@@ -223,6 +223,11 @@ body{
     margin-right: 10px;
     position: relative;
 }
+.withIcon-md{
+    margin-left: 40px;
+    margin-right: 10px;
+    position: relative;
+}
 .icon{
     position: absolute;
     left: -17px;
@@ -231,6 +236,36 @@ body{
     height: 16px;
     display: inline-block;
 }
+.icon-md{
+    position: absolute;
+    left: -40px;
+    top: -2px;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+}
+.NOTSTART{
+    background: url("/resources/img/common.png") -144px -256px;
+    background-position-x: -144px;
+    background-position-y: -256px;
+    -ms-background-position-x: -144px;
+    -ms-background-position-y: -256px;
+}
+.RUNNING{
+    background: url("/resources/img/common.png") -144px -288px;
+    background-position-x: -144px;
+    background-position-y: -288px;
+    -ms-background-position-x: -144px;
+    -ms-background-position-y: -288px;
+}
+.ENDED{
+    background: url("/resources/img/common.png") -144px -320px;
+    background-position-x: -144px;
+    background-position-y: -320px;
+    -ms-background-position-x: -144px;
+    -ms-background-position-y: -320px;
+}
+
 .clubIcon{
     width: 16px;
     height: 16px;
@@ -322,6 +357,11 @@ body{
     border-radius: 50%;
     margin-right: 5px;
 }
+.portrait-lg{
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+}
 .tips{
     font-size: 12px;
     float: left;
@@ -329,10 +369,12 @@ body{
 .table>tbody>tr>td{
     vertical-align: middle;
 }
-.dropdown-toggle{
+.nav>li>.dropdown-toggle{
     padding: 10px !important;
 }
-
+.carousel-inner>.item>img{
+    max-width: 500%;
+}
 @media (max-width: 768px){
     .webui-popover{
         left: 0 !important;
