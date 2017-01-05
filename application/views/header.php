@@ -12,6 +12,7 @@
     <meta name="robots" content="index, follow" />
     <meta name="description" content="this is a web site about your sport,health,friends,clubs.这是一个关于你的运动,健康,朋友和俱乐部的网站"/>
     <meta name="keywords" content="sport health club run ride bicycle" />
+    <meta name="google-site-verification" content="JPgbZInNZ1dLQlDLJCtWr1Cil60U5l9dO70PgU4aBYI" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title><?=$title?></title>
     <meta charset="utf-8"/>
